@@ -5,3 +5,4 @@ All the configuration file that have made my life much easier. Mostly used in co
 
 To install, put this somewhere and run install.sh.
 
+**WARNING**: this will *overwrite your user's crontab* for now, until I figure out how to modify it only.
