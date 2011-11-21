@@ -22,10 +22,6 @@ fi
 
 # everything else
 alias ..='cd ..'
-#remap capslock to control
-if [[ -f /usr/bin/setxkbmap ]]; then
-    /usr/bin/setxkbmap -option "ctrl:nocaps"
-fi
 # narrow down ifconfig output to find roughly my ip
 alias myip="ifconfig | grep -E '(192|10)'" 
 alias irc="ssh glench@staticfree.info"
