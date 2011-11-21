@@ -12,3 +12,6 @@ set show-all-if-unmodified on
 
 # apparently makes - or _ interchangeable
 set completion-map-case on
+
+"\C-a": beginning-of-line
+"\C-e": end-of-line
