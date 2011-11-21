@@ -128,8 +128,6 @@ vnoremap <leader>< <esc>`>a<<esc>`<i><esc>
 
 " Make better-named tabs in Macvim
 set guitablabel=%t
-cd ~/om/trunk/openmile/
-
 
 " installing add-ons and their configuration
 " ==========================================
