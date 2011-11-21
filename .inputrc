@@ -1,0 +1,14 @@
+# most of these come from http://www.reddit.com/r/commandline/comments/kbeoe/you_can_make_readline_and_bash_much_more_user/?sort=confidence
+
+set editing-mode vi
+set keymap vi-insert
+
+# doc matches documents and Documents 
+set completion-ignore-case on
+
+# show all options if there is tab complete ambiguity
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+
+# apparently makes - or _ interchangeable
+set completion-map-case on
