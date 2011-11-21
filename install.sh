@@ -1,7 +1,4 @@
 #!/bin/bash
-cp .vimrc ~/
-cp .profile ~/
-cp .bashrc ~/
-cp .inputrc ~/
+cp dotfiles/* ~/
 crontab -r
 crontab cron
