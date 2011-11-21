@@ -32,6 +32,16 @@ alias irc="ssh glench@staticfree.info"
 alias di="svn di | less"
 alias untar="tar -zxvf"
 
+update_code() {
+    if [[ -d .git ]]; then
+        git pull
+    elif [[ -d .svn ]]; then
+        svn up
+    else
+        echo 'No code to update here' 1>&2
+    fi
+}
+alias up='update_code()'
 
 # Change UI
 # =========
