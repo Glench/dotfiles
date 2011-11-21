@@ -1,5 +1,9 @@
 # Glench's .profile
 export EDITOR="vim"
+# work-specific .profile that I can't share
+if [[ -f ~/.om_profile ]]; then
+    source ~/.om_profile
+fi
 
 
 # Useful Aliases
