@@ -1,4 +1,5 @@
 # Glench's .profile
+export EDITOR="vim"
 
 
 # Useful Aliases
