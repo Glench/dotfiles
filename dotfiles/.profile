@@ -37,7 +37,7 @@ update_code() {
         echo 'No code to update here' 1>&2
     fi
 }
-alias up='update_code()'
+alias up='update_code'
 
 # Change UI
 # =========
