@@ -18,9 +18,10 @@ fi
 
 # everything else
 alias ..='cd ..'
-# narrow down ifconfig output to find roughly my ip
-alias myip="ifconfig | grep -E '(192|10)'" 
 alias irc="ssh glench@staticfree.info"
+alias site="ssh glench@carabiner.peeron.com"
+# narrow down ifconfig output to find roughly my ip
+alias myip="ifconfig | grep -E '(192|10)'"
 alias di="svn di | less"
 alias untar="tar -zxvf"
 
