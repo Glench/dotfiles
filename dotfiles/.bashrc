@@ -1,6 +1,9 @@
 # Glench's .bashrc
 # This is the meat of my shell configuration.
 
+# if not running interactively, do nothing
+[ -z "$PS1" ] && return
+
 
 # Useful Aliases
 # ==============
