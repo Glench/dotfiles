@@ -162,7 +162,7 @@ call SetupVAM()
     " See BUGS sections below [*]
 
 " Command-T, quickly find and open file
-set wildignore+=*.o,*.obj,.git,.svn*.pyc,*.png,*.jpg,*.gif
+set wildignore+=*.o,*.obj,.git,.svn,*.pyc,*.png,*.jpg,*.gif
 noremap <leader>e :CommandT<cr>
 noremap <leader>r :CommandTFlush<cr>
 let g:CommandTMaxHeight = 15
