@@ -162,10 +162,11 @@ call SetupVAM()
     " See BUGS sections below [*]
 
 " Command-T, quickly find and open file
-set wildignore+=*.o,*.obj,.git,*.pyc
+set wildignore+=*.o,*.obj,.git,.svn*.pyc,*.png,*.jpg,*.gif
 noremap <leader>e :CommandT<cr>
 noremap <leader>r :CommandTFlush<cr>
 let g:CommandTMaxHeight = 15
+let g:CommandTMaxFiles = 20000
 
 " SuperTab, good tab completion
 " matchit.zip, allows matching <> among other things
