@@ -52,10 +52,10 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
-set listchars=tab:>-,trail:- " show tabs and trailing 
+set listchars=tab:>-,trail:- " show tabs and trailing space
 set invlist    " Show invisible chars, useful for finding tabs
 " (XXX: #VIM/tpope warns the line below could break things)
-set iskeyword+=$,@,%,# " none of these are word dividers 
+set iskeyword+=$,@,%,# " none of these are word dividers
 
 " No sound on errors
 set noerrorbells
@@ -69,7 +69,7 @@ if has("autocmd")
     \| exe "normal! g'\"" | endif
 endif
 
-" Keep swap files in one of these 
+" Keep swap files in one of these
 set directory=~/tmp,/tmp,.
 
 
@@ -91,6 +91,8 @@ noremap <CR> mlo<Esc>`l
 " Remap tab to indent, backspace to unindent
 nnoremap <BS> <<
 nnoremap <tab> >>
+vnoremap <BS> <<
+vnoremap <tab> >>
 
 " Fast saving and quitting
 nmap <leader>w :w<cr>
