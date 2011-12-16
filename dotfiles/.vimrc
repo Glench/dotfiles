@@ -112,22 +112,6 @@ cno jj <c-c>
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
-" Map auto complete of (, ", ', [
-inoremap ( ()<esc>i
-inoremap [ []<esc>i
-inoremap { {}<esc>i
-inoremap ' ''<esc>i
-inoremap " ""<esc>i
-inoremap < <><esc>i
-" Parenthesis/bracket expanding
-vnoremap <leader>( <esc>`>a)<esc>`<i(<esc>
-vnoremap <leader>[ <esc>`>a]<esc>`<i[<esc>
-vnoremap <leader>{ <esc>`>a}<esc>`<i{<esc>
-vnoremap <leader>' <esc>`>a'<esc>`<i'<esc>
-vnoremap <leader>" <esc>`>a"<esc>`<i"<esc>
-vnoremap <leader>< <esc>`>a<<esc>`<i><esc>
-
-
 " Make better-named tabs in Macvim
 set guitablabel=%t
 
@@ -151,7 +135,7 @@ fun SetupVAM()
         exec '!p='.shellescape(vam_install_path).'; mkdir -p "$p" && cd "$p" && git clone --depth 1 git://github.com/MarcWeber/vim-addon-manager.git'
     endif
 
-    call vam#ActivateAddons(["Command-T", "github:ervandew/supertab", "matchit.zip", "vim-less", "Jinja"], {'auto_install' : 0})
+    call vam#ActivateAddons(["Command-T", "github:ervandew/supertab", "matchit.zip", "vim-less", "Jinja", "delimitMate"], {'auto_install' : 0})
     " sample: call vam#ActivateAddons(['pluginA','pluginB', ...], {'auto_install' : 0})
     " where pluginA could be github:YourName or snipmate-snippets see vam#install#RewriteName()
     " also see section "5. Installing plugins" in VAM's documentation
@@ -174,3 +158,4 @@ let g:CommandTMaxFiles = 20000
 " matchit.zip, allows matching <> among other things
 " vim-less, syntax highlighting for lesscss
 " Jinja, syntax highlighting for Jinja2
+" delimitMate, adds good matching of parens, brackets, quotes, etc
