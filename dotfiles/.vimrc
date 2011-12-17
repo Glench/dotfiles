@@ -77,15 +77,13 @@ set directory=~/tmp,/tmp,.
 " ==================
 
 
-" Press leader and space to turn off highlighting and clear any message already displayed.
-nnoremap <silent> <leader><Space> :nohlsearch<Bar>:echo<CR>
+" Press space to turn off highlighting and clear any message already displayed.
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
-" space / shift-space scroll in normal mode
-noremap <S-space> <C-b>
-noremap <space> <C-f>
-set scrolloff=7 " keep some lines at top/bottom for scope
+" keep some lines at top/bottom for scope
+set scrolloff=7
 
-" Enter creates an empty line underneath without moving the cursor
+" Enter in normal mode creates an empty line underneath without moving the cursor
 noremap <CR> mlo<Esc>`l
 
 " Remap tab to indent, backspace to unindent
@@ -135,7 +133,7 @@ fun SetupVAM()
         exec '!p='.shellescape(vam_install_path).'; mkdir -p "$p" && cd "$p" && git clone --depth 1 git://github.com/MarcWeber/vim-addon-manager.git'
     endif
 
-    call vam#ActivateAddons(["Command-T", "github:ervandew/supertab", "matchit.zip", "vim-less", "Jinja", "delimitMate"], {'auto_install' : 0})
+    call vam#ActivateAddons(["Command-T", "github:ervandew/supertab", "matchit.zip", "vim-less", "Jinja", "delimitMate", "The_NERD_Commenter"], {'auto_install' : 0})
     " sample: call vam#ActivateAddons(['pluginA','pluginB', ...], {'auto_install' : 0})
     " where pluginA could be github:YourName or snipmate-snippets see vam#install#RewriteName()
     " also see section "5. Installing plugins" in VAM's documentation
@@ -155,7 +153,13 @@ let g:CommandTMaxHeight = 15
 let g:CommandTMaxFiles = 20000
 
 " SuperTab, good tab completion
+let g:SuperTabCrMapping = 0 " this is to not conflict with delimitMate
+
 " matchit.zip, allows matching <> among other things
 " vim-less, syntax highlighting for lesscss
 " Jinja, syntax highlighting for Jinja2
 " delimitMate, adds good matching of parens, brackets, quotes, etc
+let g:delimitMate_expand_cr = 1 " turn '(<cr>' into '(<cr>    |<cr>)'
+let g:delimitMate_expand_space = 1 " turn '( ' into '( | )'
+
+" The NERD Commenter, use for smart commenting (usually use <leader>cu)
