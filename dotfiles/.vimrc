@@ -138,7 +138,7 @@ fun SetupVAM()
         exec '!p='.shellescape(vam_install_path).'; mkdir -p "$p" && cd "$p" && git clone --depth 1 git://github.com/MarcWeber/vim-addon-manager.git'
     endif
 
-    call vam#ActivateAddons(["Command-T", "github:ervandew/supertab", "matchit.zip", "vim-less", "Jinja", "delimitMate", "The_NERD_Commenter", "surround", "Indent_Guides", "jQuery"], {'auto_install' : 0})
+    call vam#ActivateAddons(["Command-T", "github:ervandew/supertab", "matchit.zip", "vim-less", "Jinja", "delimitMate", "surround", "Indent_Guides", "jQuery", "tComment"], {'auto_install' : 0})
     " sample: call vam#ActivateAddons(['pluginA','pluginB', ...], {'auto_install' : 0})
     " where pluginA could be github:YourName or snipmate-snippets see vam#install#RewriteName()
     " also see section "5. Installing plugins" in VAM's documentation
@@ -167,7 +167,6 @@ call SetupVAM()
     let g:delimitMate_expand_cr = 1 " turn '(<cr>' into '(<cr>    |<cr>)'
     let g:delimitMate_expand_space = 1 " turn '( ' into '( | )'
 
-" The NERD Commenter, use for smart commenting (usually use <leader>cu)
 " surround, change surround brackets, quotes, html tags, etc.
     " use ds<char> and cs<old><new>
     " use dst/cst for html
@@ -179,3 +178,7 @@ call SetupVAM()
 
 " jQuery, add better syntax highlighting
     autocmd BufRead,BufNewFile *.js set ft=javascript syntax=jquery " set on all js
+
+" tComment, allow simple and smart commenting
+    nnoremap // :TComment<CR>
+    vnoremap // :TComment<CR>
