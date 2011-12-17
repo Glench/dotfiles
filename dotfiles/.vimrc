@@ -1,3 +1,5 @@
+" Glench's vim configuration file
+
 " save my eyes
 set background=dark
 
@@ -117,8 +119,9 @@ map <Leader>s :setlocal spell! spell?<CR>
 " Make better-named tabs in Macvim
 set guitablabel=%t
 
-" installing add-ons and their configuration
-" ==========================================
+
+" Installing add-ons and their configurations
+" ===========================================
 
 
 " Awesome awesome awesome package manager for vim scripts
@@ -138,7 +141,7 @@ fun SetupVAM()
         exec '!p='.shellescape(vam_install_path).'; mkdir -p "$p" && cd "$p" && git clone --depth 1 git://github.com/MarcWeber/vim-addon-manager.git'
     endif
 
-    call vam#ActivateAddons(["Command-T", "github:ervandew/supertab", "matchit.zip", "vim-less", "Jinja", "delimitMate", "surround", "Indent_Guides", "jQuery", "tComment"], {'auto_install' : 0})
+    call vam#ActivateAddons(["Command-T", "github:ervandew/supertab", "matchit.zip", "vim-less", "Jinja", "delimitMate", "surround", "Indent_Guides", "jQuery", "tComment", "IndexedSearch"], {'auto_install' : 0})
     " sample: call vam#ActivateAddons(['pluginA','pluginB', ...], {'auto_install' : 0})
     " where pluginA could be github:YourName or snipmate-snippets see vam#install#RewriteName()
     " also see section "5. Installing plugins" in VAM's documentation
@@ -151,6 +154,7 @@ call SetupVAM()
     " See BUGS sections below [*]
 
 " Command-T, quickly find and open file
+    " https://github.com/wincent/Command-T
     set wildignore+=*.o,*.obj,.git,.svn,*.pyc,*.png,*.jpg,*.gif
     noremap <leader>e :CommandT<cr>
     noremap <leader>r :CommandTFlush<cr>
@@ -158,27 +162,41 @@ call SetupVAM()
     let g:CommandTMaxFiles = 20000 " need to see all files in directory
 
 " SuperTab, good tab completion
+    " https://github.com/ervandew/supertab
     let g:SuperTabCrMapping = 0 " this is to not conflict with delimitMate
 
 " matchit.zip, allows matching <> among other things
+    " http://www.vim.org/scripts/script.php?script_id=39
+
 " vim-less, syntax highlighting for lesscss
+    " https://github.com/groenewege/vim-less
+
 " Jinja, syntax highlighting for Jinja2
+
 " delimitMate, adds good matching of parens, brackets, quotes, etc
+    " https://github.com/Raimondi/delimitMate
     let g:delimitMate_expand_cr = 1 " turn '(<cr>' into '(<cr>    |<cr>)'
     let g:delimitMate_expand_space = 1 " turn '( ' into '( | )'
 
 " surround, change surround brackets, quotes, html tags, etc.
+    " https://github.com/tpope/vim-surround
     " use ds<char> and cs<old><new>
     " use dst/cst for html
 
 " Indent_Guides, visually show indents
+    " https://github.com/nathanaelkane/vim-indent-guides
     let g:indent_guides_guide_size = 1
     let g:indent_guides_color_change_percent = 7
     let g:indent_guides_enable_on_vim_startup = 0
 
 " jQuery, add better syntax highlighting
+    " https://github.com/itspriddle/vim-jquery
     autocmd BufRead,BufNewFile *.js set ft=javascript syntax=jquery " set on all js
 
 " tComment, allow simple and smart commenting
+    " https://github.com/tomtom/tcomment_vim
     nnoremap // :TComment<CR>
     vnoremap // :TComment<CR>
+
+" IndexedSearch, add '<count> of <total>' when doing text searches
+    " https://github.com/vim-scripts/IndexedSearch
