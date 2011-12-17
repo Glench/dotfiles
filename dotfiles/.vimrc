@@ -10,24 +10,6 @@ syntax on
 filetype plugin on
 filetype indent on
 
-" Figure out which type of hilighting to use for html.
-" I use this to get nice jinja highlighting.
-fun! s:SelectHTML()
-let n = 1
-while n < 50 && n < line("$")
-  " check for jinja
-  if getline(n) =~ '{%\s*\(extends\|block\|macro\|set\|if\|for\|include\|trans\)\>'
-    set ft=jinja
-    return
-  endif
-    let n = n + 1
-  endwhile
-  " go with html
-  set ft=html
-endfun
-autocmd BufNewFile,BufRead *.html,*.htm  call s:SelectHTML()
-
-
 
 " Random vim niceties
 " ===================
@@ -141,7 +123,7 @@ fun SetupVAM()
         exec '!p='.shellescape(vam_install_path).'; mkdir -p "$p" && cd "$p" && git clone --depth 1 git://github.com/MarcWeber/vim-addon-manager.git'
     endif
 
-    call vam#ActivateAddons(["Command-T", "github:ervandew/supertab", "matchit.zip", "vim-less", "Jinja", "delimitMate", "surround", "Indent_Guides", "jQuery", "tComment", "IndexedSearch"], {'auto_install' : 0})
+    call vam#ActivateAddons(["Command-T", "github:ervandew/supertab", "matchit.zip", "vim-less", "delimitMate", "surround", "Indent_Guides", "jQuery", "tComment", "IndexedSearch", "github:Glench/Vim-Jinja2-Syntax"], {'auto_install' : 0})
     " sample: call vam#ActivateAddons(['pluginA','pluginB', ...], {'auto_install' : 0})
     " where pluginA could be github:YourName or snipmate-snippets see vam#install#RewriteName()
     " also see section "5. Installing plugins" in VAM's documentation
@@ -171,8 +153,6 @@ call SetupVAM()
 " vim-less, syntax highlighting for lesscss
     " https://github.com/groenewege/vim-less
 
-" Jinja, syntax highlighting for Jinja2
-
 " delimitMate, adds good matching of parens, brackets, quotes, etc
     " https://github.com/Raimondi/delimitMate
     let g:delimitMate_expand_cr = 1 " turn '(<cr>' into '(<cr>    |<cr>)'
@@ -200,3 +180,7 @@ call SetupVAM()
 
 " IndexedSearch, add '<count> of <total>' when doing text searches
     " https://github.com/vim-scripts/IndexedSearch
+
+" Vim-Jinja2-Syntax, syntax highlighting for Jinja2
+    " https://github.com/Glench/Vim-Jinja2-Syntax
+
