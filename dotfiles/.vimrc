@@ -110,6 +110,10 @@ cno jj <c-c>
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
+" toggle spelling with leader s
+map <Leader>s :setlocal spell! spell?<CR>
+" ]s and [s for finding misspelled words and z= for alternatives
+
 " Make better-named tabs in Macvim
 set guitablabel=%t
 
@@ -118,6 +122,7 @@ set guitablabel=%t
 
 
 " Awesome awesome awesome package manager for vim scripts
+" Operative commands are :UninstallNotLoadedAddons and :UpdateAddons
 fun SetupVAM()
     " YES, you can customize this vam_install_path path and everything still works!
     let vam_install_path = expand('$HOME') . '/.vim/vim-addons'
@@ -133,7 +138,7 @@ fun SetupVAM()
         exec '!p='.shellescape(vam_install_path).'; mkdir -p "$p" && cd "$p" && git clone --depth 1 git://github.com/MarcWeber/vim-addon-manager.git'
     endif
 
-    call vam#ActivateAddons(["Command-T", "github:ervandew/supertab", "matchit.zip", "vim-less", "Jinja", "delimitMate", "The_NERD_Commenter"], {'auto_install' : 0})
+    call vam#ActivateAddons(["Command-T", "github:ervandew/supertab", "matchit.zip", "vim-less", "Jinja", "delimitMate", "The_NERD_Commenter", "surround", "Indent_Guides"], {'auto_install' : 0})
     " sample: call vam#ActivateAddons(['pluginA','pluginB', ...], {'auto_install' : 0})
     " where pluginA could be github:YourName or snipmate-snippets see vam#install#RewriteName()
     " also see section "5. Installing plugins" in VAM's documentation
@@ -146,20 +151,31 @@ call SetupVAM()
     " See BUGS sections below [*]
 
 " Command-T, quickly find and open file
-set wildignore+=*.o,*.obj,.git,.svn,*.pyc,*.png,*.jpg,*.gif
-noremap <leader>e :CommandT<cr>
-noremap <leader>r :CommandTFlush<cr>
-let g:CommandTMaxHeight = 15
-let g:CommandTMaxFiles = 20000
+    set wildignore+=*.o,*.obj,.git,.svn,*.pyc,*.png,*.jpg,*.gif
+    noremap <leader>e :CommandT<cr>
+    noremap <leader>r :CommandTFlush<cr>
+    let g:CommandTMaxHeight = 15
+    let g:CommandTMaxFiles = 20000 " need to see all files in directory
 
 " SuperTab, good tab completion
-let g:SuperTabCrMapping = 0 " this is to not conflict with delimitMate
+    let g:SuperTabCrMapping = 0 " this is to not conflict with delimitMate
 
 " matchit.zip, allows matching <> among other things
 " vim-less, syntax highlighting for lesscss
 " Jinja, syntax highlighting for Jinja2
 " delimitMate, adds good matching of parens, brackets, quotes, etc
-let g:delimitMate_expand_cr = 1 " turn '(<cr>' into '(<cr>    |<cr>)'
-let g:delimitMate_expand_space = 1 " turn '( ' into '( | )'
+    let g:delimitMate_expand_cr = 1 " turn '(<cr>' into '(<cr>    |<cr>)'
+    let g:delimitMate_expand_space = 1 " turn '( ' into '( | )'
 
 " The NERD Commenter, use for smart commenting (usually use <leader>cu)
+" surround, change surround brackets, quotes, html tags, etc.
+    " use ds<char> and cs<old><new>
+    " use dst/cst for html
+
+" Indent_Guides, visually show indents
+    let g:indent_guides_guide_size = 1
+    let g:indent_guides_color_change_percent = 7
+    let g:indent_guides_auto_colors = 0
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#1A1A1A ctermbg=darkgray
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#1A1A1A ctermbg=darkgray
+    let g:indent_guides_enable_on_vim_startup = 0
