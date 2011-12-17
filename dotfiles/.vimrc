@@ -138,7 +138,7 @@ fun SetupVAM()
         exec '!p='.shellescape(vam_install_path).'; mkdir -p "$p" && cd "$p" && git clone --depth 1 git://github.com/MarcWeber/vim-addon-manager.git'
     endif
 
-    call vam#ActivateAddons(["Command-T", "github:ervandew/supertab", "matchit.zip", "vim-less", "Jinja", "delimitMate", "The_NERD_Commenter", "surround", "Indent_Guides"], {'auto_install' : 0})
+    call vam#ActivateAddons(["Command-T", "github:ervandew/supertab", "matchit.zip", "vim-less", "Jinja", "delimitMate", "The_NERD_Commenter", "surround", "Indent_Guides", "jQuery"], {'auto_install' : 0})
     " sample: call vam#ActivateAddons(['pluginA','pluginB', ...], {'auto_install' : 0})
     " where pluginA could be github:YourName or snipmate-snippets see vam#install#RewriteName()
     " also see section "5. Installing plugins" in VAM's documentation
@@ -175,7 +175,7 @@ call SetupVAM()
 " Indent_Guides, visually show indents
     let g:indent_guides_guide_size = 1
     let g:indent_guides_color_change_percent = 7
-    let g:indent_guides_auto_colors = 0
-    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#1A1A1A ctermbg=darkgray
-    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#1A1A1A ctermbg=darkgray
     let g:indent_guides_enable_on_vim_startup = 0
+
+" jQuery, add better syntax highlighting
+    autocmd BufRead,BufNewFile *.js set ft=javascript syntax=jquery " set on all js
