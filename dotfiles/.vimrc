@@ -64,10 +64,19 @@ set directory=~/tmp,/tmp,.
 " ==================
 
 
-" use vim movements in insert mode
+" navigate by visual lines in text wrap situations
+nmap <up> gk
+nmap k gk
+nmap <down> gj
+nmap j gj
+
+" in visual mode, use arrow keys or control+movement, navigating by visual
+" line in text wrap situations
 ino <C-h> <Left>
-ino <C-j> <Down>
-ino <C-k> <Up>
+ino <C-j> <C-o>gj
+ino <down> <C-o>gj
+ino <C-k> <C-o>gk
+ino <up> <C-o>gk
 ino <C-l> <Right>
 
 " Press space to turn off highlighting and clear any message already displayed.
@@ -90,6 +99,10 @@ nmap <leader>w :w<cr>
 nmap <leader>wq :wq!<cr>
 nmap <leader>q :q<cr>
 nmap <leader>1 :q!<cr>
+
+" When forgetting to sudo a file, use <Leader>! to save (or :w!!)
+cnoremap w!! w !sudo tee % >/dev/null
+nmap <Leader>! :w!!<cr>
 
 " Bash like keys for the command line
 cnoremap <C-A>      <Home>
