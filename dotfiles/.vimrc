@@ -15,19 +15,22 @@ filetype indent on
 " ===================
 
 
-set nocompatible " Explicitly get out of vi-compatible mode
-set title        " Make terminal title file name
-set ruler        " Show line numbers subtly.
-set number       " Show line numbers
-set showcmd      " Show (partial) command in status line.
-set showmatch    " Show matching brackets.
-set ignorecase   " Do case insensitive matching
-set smartcase    " Do smart case matching
-set incsearch    " Incremental search
-set hlsearch     " Hilight the search terms
-set cursorline   " Hilights the line the cursor's on
-set autoread     " auto-reload modified files with no local changes
-set lazyredraw   " do not redraw while running macros
+set nocompatible   " Explicitly get out of vi-compatible mode
+set title          " Make terminal title file name
+set ruler          " Show line numbers subtly.
+set number         " Show line numbers
+set showcmd        " Show (partial) command in status line.
+set showmatch      " Show matching brackets.
+set ignorecase     " Do case insensitive matching
+set smartcase      " Do smart case matching
+set incsearch      " Incremental search
+set hlsearch       " Hilight the search terms
+set cursorline     " Hilights the line the cursor's on
+set autoread       " auto-reload modified files with no local changes
+set lazyredraw     " do not redraw while running macros
+set relativenumber " show line numbers in relation to current line
+au BufReadPost * set relativenumber " weird but useful
+
 
 " Indenting rules, mostly for python
 set autoindent
