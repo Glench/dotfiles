@@ -5,6 +5,8 @@ All the configuration file that have made my life much easier. Mostly used in co
 
 Most of my work is python (with jinja) and javascript, but I tried to build everything as language-agnostic as I could. These files are also OS-agnostic as long as you're on mac or linux. :)
 
+I cobbled most of these together from browsing other people's dotfiles repositories on Github, so thanks, everyone!
+
 To install, put this in your home directory and run install.sh.
 
 **WARNING**: running install.sh will *overwrite your user's crontab*.
