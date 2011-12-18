@@ -61,6 +61,12 @@ set directory=~/tmp,/tmp,.
 " ==================
 
 
+" use vim movements in insert mode
+ino <C-h> <Left>
+ino <C-j> <Down>
+ino <C-k> <Up>
+ino <C-l> <Right>
+
 " Press space to turn off highlighting and clear any message already displayed.
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
