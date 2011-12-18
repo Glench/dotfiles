@@ -4,7 +4,9 @@
 # do across all platforms
 
 export EDITOR="vim"
+export PAGER="less"
 export PYTHONSTARTUP=~/.pythonrc.py
+
 # work-specific .profile that I can't share
 if [[ -f ~/.om_profile ]]; then
     source ~/.om_profile
