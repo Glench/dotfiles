@@ -20,14 +20,26 @@ else
 fi
 
 # everything else
-alias ..='cd ..'
+alias ..='cd ..' # up a directory
+alias -- -="cd -" # - to go back
 alias irc="ssh glench@staticfree.info"
 alias site="ssh glench@carabiner.peeron.com"
 # narrow down ifconfig output to find roughly my ip
 alias myip="ifconfig | grep -E '(192|10)'"
-alias di="svn di | less"
 alias untar="tar -zxvf"
 
+mkdir_and_cd() {
+    mkdir $1 && cd $1
+}
+diff_code() {
+    if [[ -d .git ]]; then
+        git diff | less
+    elif [[ -d .svn ]]; then
+        svn di | less
+    else
+        echo 'No code to diff here' 1>&2
+    fi
+}
 update_code() {
     if [[ -d .git ]]; then
         git pull
@@ -37,7 +49,9 @@ update_code() {
         echo 'No code to update here' 1>&2
     fi
 }
+alias mkcd='mkdir_and_cd'
 alias up='update_code'
+alias di='diff_code'
 
 # Change UI
 # =========
