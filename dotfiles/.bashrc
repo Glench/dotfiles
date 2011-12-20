@@ -27,6 +27,7 @@ alias site="ssh glench@carabiner.peeron.com"
 # narrow down ifconfig output to find roughly my ip
 alias myip="ifconfig | grep -E '(192|10)'"
 alias untar="tar -zxvf"
+alias tmp="cd /tmp"
 
 mkdir_and_cd() {
     mkdir $1 && cd $1
