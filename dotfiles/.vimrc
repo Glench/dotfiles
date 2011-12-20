@@ -29,8 +29,11 @@ set hlsearch          " Hilight the search terms
 set cursorline        " Hilights the line the cursor's on
 set autoread          " auto-reload modified files with no local changes
 set lazyredraw        " do not redraw while running macros
-set relativenumber    " show line numbers in relation to current line
-au BufReadPost * set relativenumber " weird but useful
+" introduced in vim version 7.3
+if version >= 703
+  set relativenumber    " show line numbers in relation to current line
+  au BufReadPost * set relativenumber " weird but useful
+endif
 
 
 " Indenting rules, mostly for python
