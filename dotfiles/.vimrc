@@ -121,6 +121,9 @@ cno jj <c-c>
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
+" Remove spaces at end of line with leader space
+noremap <Leader><Space> :%s/\s\+$//g<cr>
+
 " toggle spelling with leader s
 map <Leader>s :setlocal spell! spell?<CR>
 " ]s and [s for finding misspelled words and z= for alternatives
