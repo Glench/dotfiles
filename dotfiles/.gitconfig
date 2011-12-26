@@ -1,3 +1,8 @@
 [user]
     email = www@glench.com
     name = Glen Chiacchieri
+[alias]
+    st = status
+    co = checkout
+    unadd = reset HEAD
+    clear = checkout --
