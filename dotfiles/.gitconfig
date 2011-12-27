@@ -4,5 +4,6 @@
 [alias]
     st = status
     co = checkout
+    ci = commit -va
     unadd = reset HEAD
     clear = checkout --
