@@ -9,4 +9,4 @@ I cobbled most of these together from browsing other people's dotfiles repositor
 
 To install, put this in your home directory and run install.sh.
 
-**WARNING**: running install.sh will *overwrite your user's crontab and other configuration files*.
+**WARNING**: running install.sh will *overwrite your user's crontab and other configuration files*. You should pretty much only run this script if you are me.
