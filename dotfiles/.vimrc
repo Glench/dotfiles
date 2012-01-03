@@ -112,7 +112,6 @@ nmap <Leader>! :w!!<cr>
 " Bash like keys for the command line
 cnoremap <C-A>      <Home>
 cnoremap <C-E>      <End>
-cnoremap <C-K>      <C-U>
 
 " Remaps 'jj' in quick succession to <escape>
 ino jj <esc>
@@ -127,6 +126,9 @@ noremap <Leader><Space> :%s/\s\+$//g<cr>
 " toggle spelling with leader s
 map <Leader>s :setlocal spell! spell?<CR>
 " ]s and [s for finding misspelled words and z= for alternatives
+
+" Y should yank to EOL
+map Y y$
 
 " Make better-named tabs in Macvim
 set guitablabel=%t
