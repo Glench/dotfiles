@@ -7,3 +7,5 @@
     ci = commit -va
     unadd = reset HEAD
     clear = checkout --
+[core]
+    excludesfile = ~/.gitignore
