@@ -17,7 +17,6 @@ filetype indent on
 
 set nocompatible      " Explicitly get out of vi-compatible mode
 set title             " Make terminal title file name
-set clipboard=unnamed " yank/paste from system clipboard in macvim
 set ruler             " Show line numbers subtly.
 set number            " Show line numbers
 set showcmd           " Show (partial) command in status line.
