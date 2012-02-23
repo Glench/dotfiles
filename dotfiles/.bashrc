@@ -22,7 +22,7 @@ fi
 # everything else
 alias ..='cd ..' # up a directory
 alias -- -="cd -" # - to go back
-alias irc="ssh glench@staticfree.info"
+alias irc="ssh -t glench@staticfree.info screen -dRU"
 alias site="ssh glench@carabiner.peeron.com"
 # narrow down ifconfig output to find roughly my ip
 alias myip="ifconfig | grep -E '(192|10)'"
