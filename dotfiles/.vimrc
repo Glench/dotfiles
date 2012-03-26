@@ -194,7 +194,7 @@ call SetupVAM()
     " use ds<char> and cs<old><new>
     " use dst/cst for html
 
-" Indent_Guides, visually show indents
+" Indent_Guides, visually show indents, toggle with <leader>ig
     " https://github.com/nathanaelkane/vim-indent-guides
     let g:indent_guides_guide_size = 1
     let g:indent_guides_color_change_percent = 7
