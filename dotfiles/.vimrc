@@ -129,6 +129,11 @@ map <Leader>s :setlocal spell! spell?<CR>
 " Y should yank to EOL
 map Y y$
 
+" make working with tabs cross-platform easier
+map <Leader>t :tabnew<CR>
+map <Leader>j :tabprevious<CR>
+map <Leader>k :tabnext<CR>
+
 " Make better-named tabs in Macvim
 set guitablabel=%t
 
@@ -154,7 +159,7 @@ fun SetupVAM()
         exec '!p='.shellescape(vam_install_path).'; mkdir -p "$p" && cd "$p" && git clone --depth 1 git://github.com/MarcWeber/vim-addon-manager.git'
     endif
 
-    call vam#ActivateAddons(["Command-T", "github:ervandew/supertab", "matchit.zip", "vim-less", "delimitMate", "surround", "Indent_Guides", "jQuery", "tComment", "IndexedSearch", "github:Glench/Vim-Jinja2-Syntax", "JavaScript_Indent"], {'auto_install' : 0})
+    call vam#ActivateAddons(["Command-T", "github:ervandew/supertab", "matchit.zip", "vim-less", "delimitMate", "Indent_Guides", "jQuery", "tComment", "IndexedSearch", "github:Glench/Vim-Jinja2-Syntax", "JavaScript_Indent"], {'auto_install' : 0})
     " sample: call vam#ActivateAddons(['pluginA','pluginB', ...], {'auto_install' : 0})
     " where pluginA could be github:YourName or snipmate-snippets see vam#install#RewriteName()
     " also see section "5. Installing plugins" in VAM's documentation
@@ -189,12 +194,7 @@ call SetupVAM()
     let g:delimitMate_expand_cr = 1 " turn '(<cr>' into '(<cr>    |<cr>)'
     let g:delimitMate_expand_space = 1 " turn '( ' into '( | )'
 
-" surround, change surround brackets, quotes, html tags, etc.
-    " https://github.com/tpope/vim-surround
-    " use ds<char> and cs<old><new>
-    " use dst/cst for html
-
-" Indent_Guides, visually show indents, toggle with <leader>ig
+" Indent_Guides, visually show indents, <leader>ig to toggle
     " https://github.com/nathanaelkane/vim-indent-guides
     let g:indent_guides_guide_size = 1
     let g:indent_guides_color_change_percent = 7
