@@ -5,6 +5,7 @@
     st = status
     co = checkout
     ci = commit -va
+    di = diff
     unadd = reset HEAD
     clear = checkout --
 [core]
