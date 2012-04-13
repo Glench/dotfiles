@@ -10,6 +10,9 @@ syntax on
 filetype plugin on
 filetype indent on
 
+" Highlight VCS conflict markers
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+
 
 " Random vim niceties
 " ===================
