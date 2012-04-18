@@ -31,6 +31,7 @@ set hlsearch          " Hilight the search terms
 set cursorline        " Hilights the line the cursor's on
 set autoread          " auto-reload modified files with no local changes
 set lazyredraw        " do not redraw while running macros
+set mouse=a           " turn the mouse on for all modes
 " introduced in vim version 7.3
 if version >= 703
   set relativenumber    " show line numbers in relation to current line
@@ -162,7 +163,7 @@ fun SetupVAM()
         exec '!p='.shellescape(vam_install_path).'; mkdir -p "$p" && cd "$p" && git clone --depth 1 git://github.com/MarcWeber/vim-addon-manager.git'
     endif
 
-    call vam#ActivateAddons(["Command-T", "github:ervandew/supertab", "matchit.zip", "vim-less", "delimitMate", "Indent_Guides", "jQuery", "tComment", "IndexedSearch", "github:Glench/Vim-Jinja2-Syntax", "JavaScript_Indent", "github:briandoll/change-inside-surroundings.vim"], {'auto_install' : 0})
+    call vam#ActivateAddons(["github:ervandew/supertab", "matchit.zip", "vim-less", "delimitMate", "Indent_Guides", "jQuery", "tComment", "IndexedSearch", "github:Glench/Vim-Jinja2-Syntax", "JavaScript_Indent", "github:briandoll/change-inside-surroundings.vim", "ctrlp"], {'auto_install' : 0})
     " sample: call vam#ActivateAddons(['pluginA','pluginB', ...], {'auto_install' : 0})
     " where pluginA could be github:YourName or snipmate-snippets see vam#install#RewriteName()
     " also see section "5. Installing plugins" in VAM's documentation
@@ -174,13 +175,17 @@ call SetupVAM()
     " option2:  au GUIEnter * call SetupVAM()
     " See BUGS sections below [*]
 
-" Command-T, quickly find and open file
-    " https://github.com/wincent/Command-T
+" CtrlP, quickly find and open files
+"
+"
+    " Replaces Command-T because it doesn't rely on Ruby
+    " http://kien.github.com/ctrlp.vim/
     set wildignore+=*.o,*.obj,.git,.svn,*.pyc,*.png,*.jpg,*.gif
-    noremap <leader>e :CommandT<cr>
-    noremap <leader>r :CommandTFlush<cr>
-    let g:CommandTMaxHeight = 15
-    let g:CommandTMaxFiles = 20000 " need to see all files in directory
+    let g:ctrlp_map = '<leader>e'
+    let g:ctrlp_cmd = 'CtrlPMixed'
+    noremap <leader>r :CtrlPClearCache<cr> " refresh files / buffers
+    let g:ctrlp_max_height = 15
+    let g:ctrlp_max_files = 20000
 
 " SuperTab, good tab completion
     " https://github.com/ervandew/supertab
