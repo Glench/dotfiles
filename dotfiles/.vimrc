@@ -146,17 +146,20 @@ if has("unix")
         " copy the current line but don't copy the indents in the line and keep cursor in same position
         nnoremap <C-c> mm^v$!pbcopy<CR>:undo<CR>`m
         vnoremap <C-x> !pbcopy<CR>
-        nnoremap <C-v> :r!pbpaste<CR> " note that this overwrites visual block selection
+        inoremap <C-v> <Esc>:r!pbpaste<CR>a
+        " note that this overwrites visual block selection
     else
         " if not OSX, just try to use the special system clipboard buffer
         vnoremap <C-c> "+y
         nnoremap <C-c> mm^v$"+y`m " copy current line
         vnoremap <C-x> "+d
         nnoremap <C-v> "+p
+        inoremap <C-v> <Esc>"+pa
+        " note that this overwrites visual block selection
     endif
 endif
 
-" Make better-named tabs in Macvim
+" Make better-named tabs
 set guitablabel=%t
 
 
