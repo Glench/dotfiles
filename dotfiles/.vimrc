@@ -176,8 +176,6 @@ call SetupVAM()
     " See BUGS sections below [*]
 
 " CtrlP, quickly find and open files
-"
-"
     " Replaces Command-T because it doesn't rely on Ruby
     " http://kien.github.com/ctrlp.vim/
     set wildignore+=*.o,*.obj,.git,.svn,*.pyc,*.png,*.jpg,*.gif
@@ -186,6 +184,7 @@ call SetupVAM()
     noremap <leader>r :CtrlPClearCache<cr> " refresh files / buffers
     let g:ctrlp_max_height = 15
     let g:ctrlp_max_files = 20000
+    let g:ctrlp_working_path_mode = 0 " fix slightly annoying behavior with svn projects
 
 " SuperTab, good tab completion
     " https://github.com/ervandew/supertab
