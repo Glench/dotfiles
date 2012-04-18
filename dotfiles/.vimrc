@@ -38,7 +38,6 @@ if version >= 703
   au BufReadPost * set relativenumber " weird but useful
 endif
 
-
 " Indenting rules, mostly for python
 set autoindent
 set smartindent
@@ -138,6 +137,25 @@ map <Leader>t :tabnew<CR>
 map <Leader>j :tabprevious<CR>
 map <Leader>k :tabnext<CR>
 
+" copy/cut/paste to system clipboard with Control + c/x/v, respectively
+if has("unix")
+    let s:uname = system("uname")
+    " detect OSX (kind of a hack, but works)
+    if s:uname == "Darwin\n"
+        vnoremap <C-c> !pbcopy<CR>:undo<CR>
+        " copy the current line but don't copy the indents in the line and keep cursor in same position
+        nnoremap <C-c> mm^v$!pbcopy<CR>:undo<CR>`m
+        vnoremap <C-x> !pbcopy<CR>
+        nnoremap <C-v> :r!pbpaste<CR> " note that this overwrites visual block selection
+    else
+        " if not OSX, just try to use the special system clipboard buffer
+        vnoremap <C-c> "+y
+        nnoremap <C-c> mm^v$"+y`m " copy current line
+        vnoremap <C-x> "+d
+        nnoremap <C-v> "+p
+    endif
+endif
+
 " Make better-named tabs in Macvim
 set guitablabel=%t
 
@@ -189,6 +207,7 @@ call SetupVAM()
 " SuperTab, good tab completion
     " https://github.com/ervandew/supertab
     let g:SuperTabCrMapping = 0 " this is to not conflict with delimitMate
+    let g:SuperTabDefaultCompletionType = "context" " try to complete based on type of program
 
 " matchit.zip, allows matching <> among other things
     " http://www.vim.org/scripts/script.php?script_id=39
