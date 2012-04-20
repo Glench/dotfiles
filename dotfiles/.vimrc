@@ -184,7 +184,7 @@ fun SetupVAM()
         exec '!p='.shellescape(vam_install_path).'; mkdir -p "$p" && cd "$p" && git clone --depth 1 git://github.com/MarcWeber/vim-addon-manager.git'
     endif
 
-    call vam#ActivateAddons(["github:ervandew/supertab", "matchit.zip", "vim-less", "delimitMate", "Indent_Guides", "jQuery", "tComment", "IndexedSearch", "github:Glench/Vim-Jinja2-Syntax", "JavaScript_Indent", "github:briandoll/change-inside-surroundings.vim", "ctrlp"], {'auto_install' : 0})
+    call vam#ActivateAddons(["github:ervandew/supertab", "matchit.zip", "vim-less", "delimitMate", "Indent_Guides", "jQuery", "tComment", "IndexedSearch", "github:Glench/Vim-Jinja2-Syntax", "JavaScript_Indent", "github:briandoll/change-inside-surroundings.vim", "ctrlp", "github:scrooloose/syntastic"], {'auto_install' : 0})
     " sample: call vam#ActivateAddons(['pluginA','pluginB', ...], {'auto_install' : 0})
     " where pluginA could be github:YourName or snipmate-snippets see vam#install#RewriteName()
     " also see section "5. Installing plugins" in VAM's documentation
@@ -210,7 +210,6 @@ call SetupVAM()
 " SuperTab, good tab completion
     " https://github.com/ervandew/supertab
     let g:SuperTabCrMapping = 0 " this is to not conflict with delimitMate
-    let g:SuperTabDefaultCompletionType = "context" " try to complete based on type of program
 
 " matchit.zip, allows matching <> among other things
     " http://www.vim.org/scripts/script.php?script_id=39
@@ -243,7 +242,10 @@ call SetupVAM()
 
 " Vim-Jinja2-Syntax, syntax highlighting for Jinja2
     " https://github.com/Glench/Vim-Jinja2-Syntax
-    "
+
 " Change-inside-surroundings, use <Leader>ci to change inside surroundings
     " https://github.com/briandoll/change-inside-surroundings.vim
 
+" Syntastic, syntax error / lint detector
+    " https://github.com/scrooloose/syntastic
+    let g:syntastic_check_on_open=1
