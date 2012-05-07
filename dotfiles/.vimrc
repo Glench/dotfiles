@@ -162,6 +162,9 @@ endif
 " Make better-named tabs
 set guitablabel=%t
 
+" Python macros too small to be used with snipmates
+noremap <leader>pd <Esc>iimport pdb; pdb.set_trace()<Esc>
+noremap <leader>pl <Esc>iimport logging; logging.basicConfig(level=logging.DEBUG, format='%(asctime )s - %(levelname)s - %(message)s')<Esc>
 
 " Installing add-ons and their configurations
 " ===========================================
