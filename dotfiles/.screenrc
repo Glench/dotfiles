@@ -4,9 +4,3 @@
 # keep 5000 lines of scrollback
 # useful with <C-a> [
 defscrollback 5000
-
-# status line at the bottom of the terminal to show host and number of screen windows
-caption string "%?%F%{= Bk}%? %C%A %D %d-%m-%Y %{= kB} %t%= %?%F%{= Bk}%:%{= wk}%? %n "
-hardstatus alwayslastline
-hardstatus string '%{= kG}[ %{G}%H %{g}]%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}'
-
