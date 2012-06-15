@@ -27,8 +27,15 @@ alias site="ssh glench@carabiner.peeron.com"
 # narrow down ifconfig output to find roughly my ip
 alias myip="ifconfig | grep -E '(192|10)'"
 alias untar="tar -zxvf"
-alias tmp="cd /tmp"
+alias code="cd ~/code"
 
+tmp() {
+    if [[ -d ~/tmp ]]; then
+        cd ~/tmp;
+    else
+        cd /tmp
+    fi
+}
 mkdir_and_cd() {
     mkdir $1 && cd $1
 }
@@ -53,6 +60,13 @@ update_code() {
 alias mkcd='mkdir_and_cd'
 alias up='update_code'
 alias di='diff_code'
+
+# virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/code
+if [[ -e /usr/local/bin/virtualenvwrapper.sh ]]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
 
 # Change UI
 # =========
