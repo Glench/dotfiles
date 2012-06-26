@@ -32,6 +32,7 @@ set cursorline        " Hilights the line the cursor's on
 set autoread          " auto-reload modified files with no local changes
 set lazyredraw        " do not redraw while running macros
 set mouse=a           " turn the mouse on for all modes
+set laststatus=2      " make sure to always see the status line
 " introduced in vim version 7.3
 if version >= 703
   set relativenumber    " show line numbers in relation to current line
@@ -187,7 +188,7 @@ fun SetupVAM()
         exec '!p='.shellescape(vam_install_path).'; mkdir -p "$p" && cd "$p" && git clone --depth 1 git://github.com/MarcWeber/vim-addon-manager.git'
     endif
 
-    call vam#ActivateAddons(["github:ervandew/supertab", "matchit.zip", "vim-less", "delimitMate", "Indent_Guides", "jQuery", "tComment", "IndexedSearch", "github:Glench/Vim-Jinja2-Syntax", "JavaScript_Indent", "github:briandoll/change-inside-surroundings.vim", "ctrlp", "github:scrooloose/syntastic"], {'auto_install' : 0})
+    call vam#ActivateAddons(["github:ervandew/supertab", "matchit.zip", "vim-less", "delimitMate", "Indent_Guides", "jQuery", "tComment", "IndexedSearch", "github:Glench/Vim-Jinja2-Syntax", "JavaScript_Indent", "github:briandoll/change-inside-surroundings.vim", "ctrlp", "github:scrooloose/syntastic", "Powerline"], {'auto_install' : 0})
     " sample: call vam#ActivateAddons(['pluginA','pluginB', ...], {'auto_install' : 0})
     " where pluginA could be github:YourName or snipmate-snippets see vam#install#RewriteName()
     " also see section "5. Installing plugins" in VAM's documentation
