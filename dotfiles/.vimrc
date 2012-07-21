@@ -70,8 +70,10 @@ endif
 " for files named the same thing, apparently.
 set directory=~/tmp//,/tmp//,.
 set backupdir=~/tmp//,/tmp//,.
-set undofile " also keep persistent undo when closing and reopening files
-set undodir=~/tmp//,/tmp//,.
+if version >= 703
+    set undofile " also keep persistent undo when closing and reopening files
+    set undodir=~/tmp//,/tmp//,.
+endif
 
 
 " Keyboard remapping
