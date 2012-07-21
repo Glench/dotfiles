@@ -66,8 +66,12 @@ if has("autocmd")
     \| exe "normal! g'\"" | endif
 endif
 
-" Keep swap files in one of these
-set directory=~/tmp,/tmp,.
+" Keep swap files in one of these, double slash at the end prevents collisions
+" for files named the same thing, apparently.
+set directory=~/tmp//,/tmp//,.
+set backupdir=~/tmp//,/tmp//,.
+set undofile " also keep persistent undo when closing and reopening files
+set undodir=~/tmp//,/tmp//,.
 
 
 " Keyboard remapping
