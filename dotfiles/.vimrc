@@ -35,6 +35,8 @@ set autoread          " auto-reload modified files with no local changes
 set lazyredraw        " do not redraw while running macros
 set mouse=a           " turn the mouse on for all modes
 set laststatus=2      " make sure to always see the status line
+set t_Co=256          " make sure colors work over ssh
+
 " introduced in vim version 7.3
 if version >= 703
   set relativenumber    " show line numbers in relation to current line
@@ -66,8 +68,14 @@ if has("autocmd")
     \| exe "normal! g'\"" | endif
 endif
 
-" Keep swap files in one of these
-set directory=~/tmp,/tmp,.
+" Keep swap files in one of these, double slash at the end prevents collisions
+" for files named the same thing, apparently.
+set directory=~/tmp//,/tmp//,.
+set backupdir=~/tmp//,/tmp//,.
+if version >= 703
+    set undofile " also keep persistent undo when closing and reopening files
+    set undodir=~/tmp//,/tmp//,.
+endif
 
 
 " Keyboard remapping
