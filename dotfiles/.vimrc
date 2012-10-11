@@ -198,7 +198,7 @@ fun SetupVAM()
         exec '!p='.shellescape(vam_install_path).'; mkdir -p "$p" && cd "$p" && git clone --depth 1 git://github.com/MarcWeber/vim-addon-manager.git'
     endif
 
-    call vam#ActivateAddons(["github:ervandew/supertab", "matchit.zip", "vim-less", "delimitMate", "Indent_Guides", "jQuery", "tComment", "IndexedSearch", "github:Glench/Vim-Jinja2-Syntax", "JavaScript_Indent", "github:briandoll/change-inside-surroundings.vim", "ctrlp", "github:scrooloose/syntastic", "Powerline", "Rename%1928"], {'auto_install' : 0})
+    call vam#ActivateAddons(["github:ervandew/supertab", "matchit.zip", "vim-less", "delimitMate", "Indent_Guides", "jQuery", "tComment", "IndexedSearch", "github:Glench/Vim-Jinja2-Syntax", "JavaScript_Indent", "github:briandoll/change-inside-surroundings.vim", "ctrlp", "github:scrooloose/syntastic", "Powerline", "Rename%1928", "github:majutsushi/tagbar"], {'auto_install' : 0})
     " sample: call vam#ActivateAddons(['pluginA','pluginB', ...], {'auto_install' : 0})
     " where pluginA could be github:YourName or snipmate-snippets see vam#install#RewriteName()
     " also see section "5. Installing plugins" in VAM's documentation
@@ -263,3 +263,14 @@ call SetupVAM()
 " Syntastic, syntax error / lint detector
     " https://github.com/scrooloose/syntastic
     let g:syntastic_check_on_open=1
+
+" Powerline, making vim's status bar awesome
+    " https://github.com/Lokaltog/vim-powerline"
+
+" Rename, easily rename a file inline
+    " http://www.vim.org/scripts/script.php?script_id=1928
+
+" TagBar, generate and jump through tags, needs ctags
+    " https://github.com/majutsushi/tagbar
+    nmap <Leader>o :TagbarToggle<CR>
+
