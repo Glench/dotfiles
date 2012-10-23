@@ -109,8 +109,8 @@ noremap <CR> mlo<Esc>`l
 " Remap tab to indent, backspace to unindent
 nnoremap <BS> <<
 nnoremap <tab> >>
-vnoremap <BS> <
-vnoremap <tab> >
+vnoremap <BS> <gv
+vnoremap <tab> >gv
 
 " Fast saving and quitting
 nmap <leader>w :w<cr>
