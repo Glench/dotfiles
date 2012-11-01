@@ -104,7 +104,24 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 set scrolloff=7
 
 " Enter in normal mode creates an empty line underneath without moving the cursor
-noremap <CR> mlo<Esc>`l
+" noremap <CR> mlo<Esc>`l
+
+" Use enter to insert newlines in normal mode, but not in quickfix.
+" Makes an empty line below or above current line without moving the cursor
+function! s:insert_line(direction)
+  if &buftype == "quickfix"
+    execute "normal! \<Enter>"
+  else
+    if a:direction == 'below'
+      execute "normal! mlo\<Esc>`l"
+    else
+      execute "normal! mlO\<Esc>`l"
+    endif
+  endif
+endfunction
+
+nmap <Enter> :call <SID>insert_line('below')<CR>
+nmap <S-Enter> :call <SID>insert_line('above')<CR>
 
 " Remap tab to indent, backspace to unindent
 nnoremap <BS> <<
@@ -198,7 +215,7 @@ fun SetupVAM()
         exec '!p='.shellescape(vam_install_path).'; mkdir -p "$p" && cd "$p" && git clone --depth 1 git://github.com/MarcWeber/vim-addon-manager.git'
     endif
 
-    call vam#ActivateAddons(["github:ervandew/supertab", "matchit.zip", "vim-less", "delimitMate", "Indent_Guides", "jQuery", "tComment", "IndexedSearch", "github:Glench/Vim-Jinja2-Syntax", "JavaScript_Indent", "github:briandoll/change-inside-surroundings.vim", "ctrlp", "github:scrooloose/syntastic", "Powerline", "Rename%1928", "github:majutsushi/tagbar"], {'auto_install' : 0})
+    call vam#ActivateAddons(["github:ervandew/supertab", "matchit.zip", "vim-less", "delimitMate", "Indent_Guides", "jQuery", "tComment", "IndexedSearch", "github:Glench/Vim-Jinja2-Syntax", "JavaScript_Indent", "github:briandoll/change-inside-surroundings.vim", "ctrlp", "github:scrooloose/syntastic", "Powerline", "Rename%1928", "github:majutsushi/tagbar", "grep"], {'auto_install' : 0})
     " sample: call vam#ActivateAddons(['pluginA','pluginB', ...], {'auto_install' : 0})
     " where pluginA could be github:YourName or snipmate-snippets see vam#install#RewriteName()
     " also see section "5. Installing plugins" in VAM's documentation
@@ -274,3 +291,6 @@ call SetupVAM()
     " https://github.com/majutsushi/tagbar
     nmap <Leader>o :TagbarToggle<CR>
 
+" Grep, search within projects from vim
+    nnoremap <silent> <Leader>g :Rgrep<CR>
+    let Grep_Find_Use_Xargs = 0 " for some reason fails on mac using xargs
