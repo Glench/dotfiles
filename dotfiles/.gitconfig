@@ -8,5 +8,6 @@
     di = diff
     unadd = reset HEAD
     clear = checkout --
+    pom = push origin master
 [core]
     excludesfile = ~/.gitignore
