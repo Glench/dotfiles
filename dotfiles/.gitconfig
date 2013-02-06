@@ -8,6 +8,7 @@
     di = diff
     unadd = reset HEAD
     clear = checkout --
+    p = push
     po = push origin
     pom = push origin master
 [core]
