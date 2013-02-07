@@ -15,6 +15,10 @@ filetype indent on
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
+" Highlight columns past 80 characters
+let &colorcolumn=join(range(81,999),",")
+highlight ColorColumn ctermbg=233 guibg=#121212
+
 
 " Random vim niceties
 " ===================
