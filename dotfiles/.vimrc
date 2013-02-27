@@ -35,6 +35,7 @@ set smartcase         " Do smart case matching
 set incsearch         " Incremental search
 set hlsearch          " Hilight the search terms
 set cursorline        " Hilights the line the cursor's on
+highlight CursorLine term=NONE cterm=NONE ctermbg=233 guibg=#121212
 set autoread          " auto-reload modified files with no local changes
 set lazyredraw        " do not redraw while running macros
 set mouse=a           " turn the mouse on for all modes
@@ -101,8 +102,11 @@ ino <C-k> <C-o>gk
 ino <up> <C-o>gk
 ino <C-l> <Right>
 
+" Permanently highlight lines with <Leader> l
+nnoremap <silent> <Leader>l :exe "let m = matchadd('WildMenu','\\%" . line('.') . "l')"<CR>
+
 " Press space to turn off highlighting and clear any message already displayed.
-nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+nnoremap <silent> <Space> :call clearmatches()<CR>:nohlsearch<Bar>:echo<CR>
 
 " keep some lines at top/bottom for scope
 set scrolloff=7
@@ -196,6 +200,7 @@ set guitablabel=%t
 
 " Python macros too small to be used with snipmates
 noremap <leader>pd <Esc>iimport pdb; pdb.set_trace()<Esc>
+noremap <leader>pp <Esc>ifrom pprint import pprint<CR>pprint()<Esc>i
 noremap <leader>pl <Esc>iimport logging; logging.basicConfig(level=logging.DEBUG, format='%(asctime )s - %(levelname)s - %(message)s')<Esc>
 
 " Installing add-ons and their configurations
@@ -219,7 +224,7 @@ fun SetupVAM()
         exec '!p='.shellescape(vam_install_path).'; mkdir -p "$p" && cd "$p" && git clone --depth 1 git://github.com/MarcWeber/vim-addon-manager.git'
     endif
 
-    call vam#ActivateAddons(["github:ervandew/supertab", "matchit.zip", "vim-less", "delimitMate", "Indent_Guides", "jQuery", "tComment", "IndexedSearch", "github:Glench/Vim-Jinja2-Syntax", "JavaScript_Indent", "github:briandoll/change-inside-surroundings.vim", "ctrlp", "github:scrooloose/syntastic", "Powerline", "Rename%1928", "github:majutsushi/tagbar", "grep", "JSON"], {'auto_install' : 0})
+    call vam#ActivateAddons(["github:ervandew/supertab", "matchit.zip", "vim-less", "delimitMate", "Indent_Guides", "jQuery", "tComment", "IndexedSearch", "github:Glench/Vim-Jinja2-Syntax", "JavaScript_Indent", "github:briandoll/change-inside-surroundings.vim", "ctrlp", "github:scrooloose/syntastic", "Powerline", "Rename%1928", "github:majutsushi/tagbar", "grep", "JSON", "github:airblade/vim-gitgutter"], {'auto_install' : 0})
     " sample: call vam#ActivateAddons(['pluginA','pluginB', ...], {'auto_install' : 0})
     " where pluginA could be github:YourName or snipmate-snippets see vam#install#RewriteName()
     " also see section "5. Installing plugins" in VAM's documentation
@@ -298,3 +303,9 @@ call SetupVAM()
 " Grep, search within projects from vim
     nnoremap <silent> <Leader>g :Rgrep<CR>
     let Grep_Find_Use_Xargs = 0 " for some reason fails on mac using xargs
+
+" JSON, syntax highlighting for JSON
+    " http://www.vim.org/scripts/script.php?script_id=1945
+
+" GitGutter, show git changes in files
+    " https://github.com/airblade/vim-gitgutter
