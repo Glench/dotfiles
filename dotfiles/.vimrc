@@ -15,10 +15,6 @@ filetype indent on
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
-" Highlight columns past 80 characters
-let &colorcolumn=join(range(81,999),",")
-highlight ColorColumn ctermbg=233 guibg=#121212
-
 
 " Random vim niceties
 " ===================
@@ -28,6 +24,7 @@ set nocompatible      " Explicitly get out of vi-compatible mode
 set title             " Make terminal title file name
 set ruler             " Show line numbers subtly.
 set number            " Show line numbers
+highlight LineNr ctermfg=darkgrey guifg=darkgrey
 set showcmd           " Show (partial) command in status line.
 set showmatch         " Show matching brackets.
 set ignorecase        " Do case insensitive matching
@@ -36,6 +33,7 @@ set incsearch         " Incremental search
 set hlsearch          " Hilight the search terms
 set cursorline        " Hilights the line the cursor's on
 highlight CursorLine term=NONE cterm=NONE ctermbg=233 guibg=#121212
+highlight SignColumn ctermbg=black guibg=black " fix ugly sign col colors
 set autoread          " auto-reload modified files with no local changes
 set lazyredraw        " do not redraw while running macros
 set mouse=a           " turn the mouse on for all modes
@@ -46,6 +44,11 @@ set t_Co=256          " make sure colors work over ssh
 if version >= 703
   set relativenumber    " show line numbers in relation to current line
   au BufReadPost * set relativenumber " weird but useful
+
+  highlight CursorLineNr ctermfg=206 guifg=#ff5fd7 " call out current line number
+
+  set colorcolumn=80 " Show where 80 characters is
+  highlight ColorColumn ctermbg=233 guibg=#121212
 endif
 
 " Indenting rules, mostly for python
