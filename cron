@@ -2,3 +2,4 @@
 # min hour dom month "day of week sun=0"
 0 0 * * * cd ~/dotfiles/ && git pull && ./install.sh
 0 0 * * * if [[ -d ~/tmp  ]]; then find ~/tmp -atime +21 -exec rm -rf {} \; ; fi;
+0 0 * * * if [[ -d ~/python-us-cpi/ && -d ~/www/open-source/python-us-cpi/ ]]; then python ~/python-us-cpi/uscpi/__init__.py ~/www/open-source/python-us-cpi/latest_us_cpi.csv; fi;
