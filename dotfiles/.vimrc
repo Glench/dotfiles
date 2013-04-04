@@ -62,6 +62,7 @@ set listchars=tab:>-,trail:- " show tabs and trailing space
 set invlist    " Show invisible chars, useful for finding tabs
 " (XXX: #VIM/tpope warns the line below could break things)
 set iskeyword+=$,@,%,# " none of these are word dividers
+set scrolloff=7 " keep some lines at top/bottom for scope
 
 " No sound on errors
 set noerrorbells
@@ -110,8 +111,6 @@ nnoremap <silent> <Leader>l :exe "let m = matchadd('WildMenu','\\%" . line('.') 
 " Press space to turn off highlighting and clear any message already displayed.
 nnoremap <silent> <Space> :call clearmatches()<CR>:nohlsearch<Bar>:echo<CR>
 
-" keep some lines at top/bottom for scope
-set scrolloff=7
 
 " Enter in normal mode creates an empty line underneath without moving the cursor
 " noremap <CR> mlo<Esc>`l
@@ -175,6 +174,9 @@ map <Leader>t :tabnew<CR>
 map <Leader>j :tabprevious<CR>
 map <Leader>k :tabnext<CR>
 
+" toggle pastemode
+set pastetoggle=<Leader>p
+
 " copy/cut/paste to system clipboard with Control + c/x/v, respectively
 if has("unix")
     let s:uname = system("uname")
@@ -226,7 +228,7 @@ fun SetupVAM()
         exec '!p='.shellescape(vam_install_path).'; mkdir -p "$p" && cd "$p" && git clone --depth 1 git://github.com/MarcWeber/vim-addon-manager.git'
     endif
 
-    call vam#ActivateAddons(["github:ervandew/supertab", "matchit.zip", "vim-less", "delimitMate", "Indent_Guides", "jQuery", "tComment", "IndexedSearch", "github:Glench/Vim-Jinja2-Syntax", "JavaScript_Indent", "github:briandoll/change-inside-surroundings.vim", "ctrlp", "github:scrooloose/syntastic", "Powerline", "Rename%1928", "github:majutsushi/tagbar", "grep", "JSON", "github:airblade/vim-gitgutter"], {'auto_install' : 0})
+    call vam#ActivateAddons(["github:ervandew/supertab", "matchit.zip", "vim-less", "delimitMate", "Indent_Guides", "jQuery", "tComment", "IndexedSearch", "github:Glench/Vim-Jinja2-Syntax", "JavaScript_Indent", "github:briandoll/change-inside-surroundings.vim", "ctrlp", "github:scrooloose/syntastic", "vim-powerline", "Rename%1928", "github:majutsushi/tagbar", "grep", "JSON", "github:airblade/vim-gitgutter"], {'auto_install' : 0})
     " sample: call vam#ActivateAddons(['pluginA','pluginB', ...], {'auto_install' : 0})
     " where pluginA could be github:YourName or snipmate-snippets see vam#install#RewriteName()
     " also see section "5. Installing plugins" in VAM's documentation
