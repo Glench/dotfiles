@@ -111,7 +111,6 @@ nnoremap <silent> <Leader>l :exe "let m = matchadd('WildMenu','\\%" . line('.') 
 " Press space to turn off highlighting and clear any message already displayed.
 nnoremap <silent> <Space> :call clearmatches()<CR>:nohlsearch<Bar>:echo<CR>
 
-
 " Enter in normal mode creates an empty line underneath without moving the cursor
 " noremap <CR> mlo<Esc>`l
 
@@ -161,6 +160,7 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Remove spaces at end of line with leader space
 noremap <Leader><Space> :%s/\s\+$//g<cr>
+noremap <Leader><Space><Space> :%s/	/    /g<cr>
 
 " toggle spelling with leader s
 map <Leader>s :setlocal spell! spell?<CR>
