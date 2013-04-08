@@ -58,7 +58,7 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 set shiftround " when at a weird indent, reindent to correct place
-set listchars=tab:>-,trail:- " show tabs and trailing space
+set listchars=tab:>- " show tabs and trailing space
 set invlist    " Show invisible chars, useful for finding tabs
 " (XXX: #VIM/tpope warns the line below could break things)
 set iskeyword+=$,@,%,# " none of these are word dividers
