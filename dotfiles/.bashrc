@@ -98,6 +98,32 @@ extract () {
          echo "'$1' is not a valid file"
      fi
 }
+
+bootstrap_html() {
+    # get up and running with a web page really quickly
+
+    echo '<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <style type="text/css">
+            html, body {
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+        <!-- <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet"> -->
+    </head>
+    <body>
+
+        <script src="http://code.jquery.com/jquery-2.0.2.min.js"></script>
+        <!-- <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script> -->
+        <script type="text/javascript">
+
+        </script>
+    </body>
+</html>' | vim -
+}
 alias mkcd='mkdir_and_cd'
 alias up='update_code'
 alias di='diff_code'
