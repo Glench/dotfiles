@@ -137,11 +137,37 @@ nnoremap <tab> >>
 vnoremap <BS> <gv
 vnoremap <tab> >gv
 
-" Fast saving and quitting
+" Fast saving and quitting, with automatic vim session saving
+fu! SaveSession()
+    execute 'mksession! ' . getcwd() . '/.session.vim'
+endfunction
+
+" potentially take into account git branches
+fu! RestoreSession()
+if filereadable(getcwd() . '/.session.vim')
+    execute 'so ' . getcwd() . '/.session.vim'
+    if bufexists(1)
+        for l in range(1, bufnr('$'))
+            if bufwinnr(l) == -1
+                exec 'sbuffer ' . l
+            endif
+        endfor
+    endif
+endif
+syntax on
+endfunction
+
+autocmd BufWritePost <buffer> SaveSession() " save session after writing buffer
+autocmd BufNew <buffer> SaveSession() " save session after opening new buffer
+autocmd VimLeave * call SaveSession() " save session on vim shutdown
+autocmd VimEnter * call RestoreSession()
+
 nmap <leader>w :w<cr>
 nmap <leader>wq :wq!<cr>
 nmap <leader>q :q<cr>
+nmap <leader>a :qa<cr>
 nmap <leader>1 :q!<cr>
+nmap <leader>a1 :qa!<cr>
 
 " When forgetting to sudo a file, use <Leader>! to save (or :w!!)
 cnoremap w!! w !sudo tee % >/dev/null
@@ -205,6 +231,7 @@ set guitablabel=%t
 noremap <leader>pd <Esc>iimport pdb; pdb.set_trace()<Esc>
 noremap <leader>pp <Esc>ifrom pprint import pprint<CR>pprint()<Esc>i
 noremap <leader>pl <Esc>iimport logging; logging.basicConfig(level=logging.DEBUG, format='%(asctime )s - %(levelname)s - %(message)s')<Esc>
+
 
 " Installing add-ons and their configurations
 " ===========================================
@@ -312,3 +339,4 @@ call SetupVAM()
 
 " GitGutter, show git changes in files
     " https://github.com/airblade/vim-gitgutter
+    "
