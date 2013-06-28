@@ -137,31 +137,14 @@ nnoremap <tab> >>
 vnoremap <BS> <gv
 vnoremap <tab> >gv
 
+" save session on buffer save and new buffer
+function! s:save_session()
+    execute "normal! :GSessionMakeLocall<cr>"
+endfunction
+autocmd BufWritePost <buffer> call s:save_session()
+autocmd BufNew <buffer> call s:save_session()
+
 " Fast saving and quitting, with automatic vim session saving
-fu! SaveSession()
-    execute 'mksession! ' . getcwd() . '/.session.vim'
-endfunction
-
-" potentially take into account git branches
-fu! RestoreSession()
-if filereadable(getcwd() . '/.session.vim')
-    execute 'so ' . getcwd() . '/.session.vim'
-    if bufexists(1)
-        for l in range(1, bufnr('$'))
-            if bufwinnr(l) == -1
-                exec 'sbuffer ' . l
-            endif
-        endfor
-    endif
-endif
-syntax on
-endfunction
-
-autocmd BufWritePost <buffer> SaveSession() " save session after writing buffer
-autocmd BufNew <buffer> SaveSession() " save session after opening new buffer
-autocmd VimLeave * call SaveSession() " save session on vim shutdown
-autocmd VimEnter * call RestoreSession()
-
 nmap <leader>w :w<cr>
 nmap <leader>wq :wq!<cr>
 nmap <leader>q :q<cr>
@@ -254,7 +237,7 @@ fun SetupVAM()
         exec '!p='.shellescape(vam_install_path).'; mkdir -p "$p" && cd "$p" && git clone --depth 1 git://github.com/MarcWeber/vim-addon-manager.git'
     endif
 
-    call vam#ActivateAddons(["github:ervandew/supertab", "matchit.zip", "vim-less", "delimitMate", "Indent_Guides", "jQuery", "tComment", "IndexedSearch", "github:Glench/Vim-Jinja2-Syntax", "JavaScript_Indent", "github:briandoll/change-inside-surroundings.vim", "ctrlp", "github:scrooloose/syntastic", "vim-powerline", "Rename%1928", "github:majutsushi/tagbar", "grep", "JSON", "github:airblade/vim-gitgutter"], {'auto_install' : 0})
+    call vam#ActivateAddons(["github:ervandew/supertab", "matchit.zip", "vim-less", "delimitMate", "Indent_Guides", "jQuery", "tComment", "IndexedSearch", "github:Glench/Vim-Jinja2-Syntax", "JavaScript_Indent", "github:briandoll/change-inside-surroundings.vim", "ctrlp", "github:scrooloose/syntastic", "vim-powerline", "Rename%1928", "github:majutsushi/tagbar", "grep", "JSON", "github:airblade/vim-gitgutter", "github:c9s/gsession.vim"], {'auto_install' : 0})
     " sample: call vam#ActivateAddons(['pluginA','pluginB', ...], {'auto_install' : 0})
     " where pluginA could be github:YourName or snipmate-snippets see vam#install#RewriteName()
     " also see section "5. Installing plugins" in VAM's documentation
@@ -340,3 +323,8 @@ call SetupVAM()
 " GitGutter, show git changes in files
     " https://github.com/airblade/vim-gitgutter
     "
+" Gsession, save/load vim session
+    " https://github.com/c9s/gsession.vim
+    let g:local_session_filename = '.session.vim'
+    let g:autoload_session = 1
+    let g:autosave_session = 1
