@@ -4,6 +4,7 @@
 # if not running interactively, do nothing
 [ -z "$PS1" ] && return
 
+HISTSIZE=1000000 # 1 million lines in history, why not?
 
 # Useful Aliases
 # ==============
