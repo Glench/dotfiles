@@ -100,6 +100,9 @@ extract () {
      fi
 }
 
+start_server() {
+    python -m SimpleHTTPServer
+}
 bootstrap_html() {
     # get up and running with a web page really quickly
 
