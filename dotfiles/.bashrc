@@ -124,7 +124,9 @@ bootstrap_html() {
         <script src="http://code.jquery.com/jquery-2.0.2.min.js"></script>
         <!-- <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script> -->
         <script type="text/javascript">
-
+            $(document).on('ready', function(evt) {
+                
+            });
         </script>
     </body>
 </html>' | vim -
