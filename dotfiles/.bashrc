@@ -105,7 +105,7 @@ start_server() {
 }
 bootstrap_html() {
     # get up and running with a web page really quickly
-    cp ~/dotfiles/bootstrap/*.js .
+    cp -v ~/dotfiles/bootstrap/*.js .
     cat ~/dotfiles/bootstrap/bootstrap.html | vim -
 }
 alias mkcd='mkdir_and_cd'
