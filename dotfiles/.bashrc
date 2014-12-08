@@ -100,7 +100,7 @@ extract () {
      fi
 }
 
-start_server() {
+web_server() {
     python -m SimpleHTTPServer
 }
 bootstrap_html() {
