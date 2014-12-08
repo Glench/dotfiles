@@ -110,7 +110,7 @@ alias di='diff_code'
 doit() {
     # get up and running with a web page really quickly
     id=$(uuid)
-    mkcd $id && cp -r ~/dotfiles/bootstrap/* .
+    mkcd $id && cp -r ~/dotfiles/bootstrap/* . && vim index.html
 }
 
 # virtualenvwrapper
