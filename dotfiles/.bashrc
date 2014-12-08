@@ -103,14 +103,15 @@ extract () {
 web_server() {
     python -m SimpleHTTPServer
 }
-bootstrap_html() {
-    # get up and running with a web page really quickly
-    cp -v ~/dotfiles/bootstrap/*.js .
-    cat ~/dotfiles/bootstrap/bootstrap.html | vim -
-}
 alias mkcd='mkdir_and_cd'
 alias up='update_code'
 alias di='diff_code'
+
+bootstrap_html() {
+    # get up and running with a web page really quickly
+    id=$(uuid)
+    mkcd $id && cp -r ~/dotfiles/bootstrap/* .
+}
 
 # virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
