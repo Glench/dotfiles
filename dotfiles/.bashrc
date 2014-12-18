@@ -100,7 +100,7 @@ extract () {
      fi
 }
 
-web_server() {
+webserver() {
     python -m SimpleHTTPServer
 }
 alias mkcd='mkdir_and_cd'
