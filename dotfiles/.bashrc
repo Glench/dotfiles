@@ -119,6 +119,9 @@ export PROJECT_HOME=$HOME/code
 if [[ -e /usr/local/bin/virtualenvwrapper.sh ]]; then
     source /usr/local/bin/virtualenvwrapper.sh
 fi
+if [[ -e /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]]; then
+    source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+fi
 
 # Change UI
 # =========
