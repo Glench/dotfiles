@@ -106,6 +106,9 @@ webserver() {
 alias mkcd='mkdir_and_cd'
 alias up='update_code'
 alias di='diff_code'
+fix_webcam() {
+    sudo killall VDCAssistant
+}
 
 doit() {
     # get up and running with a web page really quickly
