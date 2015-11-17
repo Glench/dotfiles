@@ -9,7 +9,7 @@ def get_idle_time():
     # for some reason this didn't seem to work using envoy
     idle_command_string = """ioreg -c IOHIDSystem | awk '/HIDIdleTime/ {print $NF/1000000000; exit}'"""
     p = subprocess.Popen(idle_command_string, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-    return float(p.stdout.read())
+    return float(p.stdout.read().strip())
 
 def set_volume(volume):
     # volume 0-10
