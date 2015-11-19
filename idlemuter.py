@@ -9,7 +9,9 @@ def get_idle_time():
     # for some reason this didn't seem to work using envoy
     idle_command_string = """ioreg -c IOHIDSystem | awk '/HIDIdleTime/ {print $NF/1000000000; exit}'"""
     p = subprocess.Popen(idle_command_string, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-    return float(p.stdout.read().strip())
+    out = p.stdout.read()
+    return float(out)
+        
 
 def set_volume(volume):
     # volume 0-10
@@ -30,7 +32,11 @@ class AwesomeStatusBarApp(rumps.App):
 
     @rumps.timer(.3)
     def mute(self, sender):
-        idle_time = get_idle_time()
+        try:
+            idle_time = get_idle_time()
+        except:
+            return
+
         if not self.i_muted_it and idle_time > 60*60*3.5:
             # mute
             set_volume(0)
