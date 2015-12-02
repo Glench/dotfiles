@@ -4,6 +4,10 @@ import subprocess
 import time
 import envoy
 import rumps
+import os
+
+if os.getuid() != 0:
+    raise Exception('need to run as sudo')
 
 def get_idle_time():
     # for some reason this didn't seem to work using envoy
