@@ -7,8 +7,3 @@ except ImportError:
 else:
     import rlcompleter
     readline.parse_and_bind("tab: complete")
-
-try:
-    import editrepl
-except ImportError:
-    print("Module editrepl not available.")
