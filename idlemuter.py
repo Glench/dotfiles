@@ -34,7 +34,7 @@ class AwesomeStatusBarApp(rumps.App):
     def menu_click(self, _):
         rumps.alert("this menu item doesn't do anything. see dotfiles/idlemuter.py ")
 
-    @rumps.timer(.3)
+    @rumps.timer(1)
     def mute(self, sender):
         try:
             idle_time = get_idle_time()
@@ -45,7 +45,7 @@ class AwesomeStatusBarApp(rumps.App):
             # mute
             set_volume(0)
             self.i_muted_it = True
-        elif self.i_muted_it and idle_time < 1:
+        elif self.i_muted_it and idle_time < 2:
             # restore volume
             set_volume(3)
             self.i_muted_it = False
