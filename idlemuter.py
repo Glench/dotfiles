@@ -3,7 +3,6 @@
 import subprocess
 import time
 import envoy
-import rumps
 import os
 
 if os.getuid() != 0:
@@ -21,35 +20,23 @@ def set_volume(volume):
     # volume 0-10
     envoy.run('''sudo osascript -e "set Volume {}"'''.format(volume))
 
+idle_time = None
+i_muted_it = False
 
-# rumps app lets a python script live in the osx status bar
-class AwesomeStatusBarApp(rumps.App):
-    def __init__(self):
-        super(AwesomeStatusBarApp, self).__init__("m")
-        self.menu = ["mute when idle active"]
+while True:
+    try:
+        idle_time = get_idle_time()
+    except:
+        time.sleep(1)
+        continue
 
-        self.i_muted_it = False
+    if not i_muted_it and idle_time > 60*60*3.5: #time in hours
+        # mute
+        set_volume(0)
+        i_muted_it = True
+    elif i_muted_it and idle_time < 2:
+        # restore volume
+        set_volume(3)
+        i_muted_it = False
 
-    @rumps.clicked("mute when idle active")
-    def menu_click(self, _):
-        rumps.alert("this menu item doesn't do anything. see dotfiles/idlemuter.py ")
-
-    @rumps.timer(1)
-    def mute(self, sender):
-        try:
-            idle_time = get_idle_time()
-        except:
-            return
-
-        if not self.i_muted_it and idle_time > 60*60*3.5:
-            # mute
-            set_volume(0)
-            self.i_muted_it = True
-        elif self.i_muted_it and idle_time < 2:
-            # restore volume
-            set_volume(3)
-            self.i_muted_it = False
-
-
-if __name__ == "__main__":
-    AwesomeStatusBarApp().run()
+    time.sleep(1) 
