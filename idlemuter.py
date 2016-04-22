@@ -1,4 +1,4 @@
-# mutes your computer after you've been idle for a few hours, unmutes it when you come back
+# this script mutes your Mac after you've been idle for a few hours, unmutes it when you come back
 
 import subprocess
 import time
@@ -6,7 +6,7 @@ import envoy
 import os
 
 if os.getuid() != 0:
-    raise Exception('need to run as sudo')
+    raise Exception('need to run as sudo in order to change volume apparently')
 
 def get_idle_time():
     # for some reason this didn't seem to work using envoy
