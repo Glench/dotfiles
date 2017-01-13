@@ -7,6 +7,7 @@ import os
 
 if os.getuid() != 0:
     raise Exception('need to run as sudo in order to change volume apparently')
+print 'running'
 
 def get_idle_time():
     # for some reason this didn't seem to work using envoy
