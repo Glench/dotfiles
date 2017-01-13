@@ -106,7 +106,7 @@ webserver() {
 alias mkcd='mkdir_and_cd'
 alias up='update_code'
 alias di='diff_code'
-alias beep='afplay /System/Library/Sounds/Glass.aiff || echo -e "\a"'
+alias beep='echo -e "\a"; afplay /System/Library/Sounds/Glass.aiff;'
 fix_webcam() {
     sudo killall VDCAssistant
 }
