@@ -107,6 +107,16 @@ alias mkcd='mkdir_and_cd'
 alias up='update_code'
 alias di='diff_code'
 alias beep='echo -e "\a"; afplay /System/Library/Sounds/Glass.aiff;'
+
+# mystery hunt stuff
+alias wp="cat ~/wiki_title_categories.txt"
+alias wptitle="egrep -o '^.*:::' | egrep -o '^.*[^:::]'"
+alias wplink="~/pythonmr.py --map=\"'{}\t\thttps://en.wikipedia.org/w/index.php?title=Special:Search&search={}'.format(item,item.replace(' ','+'))\" | expand -t 24"
+function wpcategory {
+    egrep -i ":::.*$1"
+}
+# end mystery hunt stuff
+
 fix_webcam() {
     sudo killall VDCAssistant
 }
