@@ -41,15 +41,6 @@ irc() {
         ssh -t glench@staticfree.info screen -dRU
     fi
 }
-jiggler() {
-    command -v mosh >/dev/null 2>&1;
-    mosh=$?;
-    if [[ $mosh -eq 0 ]]; then
-        mosh jiggler.media.mit.edu -- screen -dRU
-    else
-        ssh -t jiggler.media.mit.edu screen -dRU
-    fi
-}
 tmp() {
     if [[ -d ~/tmp ]]; then
         cd ~/tmp;
