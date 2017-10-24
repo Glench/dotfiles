@@ -104,8 +104,8 @@ alias beep='echo -e "\a"; afplay /System/Library/Sounds/Glass.aiff;'
 # example usage: wp | wpcategory '.*films' | wptitle | egrep -i '\w+ does \w+$
 #                ^ get all the titles of films in wikipedia and search for '<blank> does <blank>'
 
-# wp         = search wikipedia file
-# wpcategory = search for specific regex in the categories
+# wp         = list all entries in wikipedia file
+# wpcategory = search for specific regex in the categories, e.g. 'wpcategory "films"'
 # wptitle    = only show title in output, not categories
 # wplink     = turn output into a link to wikipedia to click to see what a thing is
 
