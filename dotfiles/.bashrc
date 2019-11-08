@@ -30,7 +30,6 @@ alias -- -="cd -" # - to go back
 alias site="ssh glench@carabiner.peeron.com"
 # narrow down ifconfig output to find roughly my ip
 alias myip="ifconfig | grep -E '(192|10)'"
-alias code="cd ~/code"
 
 irc() {
     command -v mosh >/dev/null 2>&1;
