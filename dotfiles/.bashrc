@@ -130,7 +130,8 @@ svelte_bootstrap() {
     npx degit Glench/template $1
     cd $1
     npm install
-    code . 
+    code .
+    code src/App.svelte
 }
 
 # virtualenvwrapper
