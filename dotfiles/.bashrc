@@ -124,7 +124,7 @@ fix_webcam() {
 doit() {
     # get up and running with a web page really quickly
     id=$(uuid)
-    mkcd $id && cp -r ~/dotfiles/bootstrap/* . && subl index.html
+    mkcd $id && cp -r ~/dotfiles/bootstrap/* . && code index.html
 }
 
 # virtualenvwrapper
