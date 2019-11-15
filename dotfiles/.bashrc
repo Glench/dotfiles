@@ -123,8 +123,14 @@ fix_webcam() {
 
 doit() {
     # get up and running with a web page really quickly
-    id=$(uuid)
+    id=$(uuid)j
     mkcd $id && cp -r ~/dotfiles/bootstrap/* . && code index.html
+}
+svelte_bootstrap() {
+    npx degit Glench/template $1
+    cd $1
+    npm install
+    code . 
 }
 
 # virtualenvwrapper
