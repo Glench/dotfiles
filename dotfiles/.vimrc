@@ -59,6 +59,12 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+" Default tab completion:
+imap <Tab> <C-P> 
+" Show menu
+set completeopt=menu,preview
+
+
 set shiftround " when at a weird indent, reindent to correct place
 set listchars=tab:>- " show tabs and trailing space
 set invlist    " Show invisible chars, useful for finding tabs
