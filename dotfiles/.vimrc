@@ -5,12 +5,14 @@ au CursorHold * checktime
 " save my eyes
 set background=dark
 
-" Syntax highlighting
-" ===================
+let macvim_skip_colorscheme=1
+set guifont=Inconsolata:h15
 
-syntax on
-filetype plugin on
-filetype indent on
+colorscheme desert
+
+
+
+
 
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
@@ -47,8 +49,8 @@ if version >= 703
 
   highlight CursorLineNr ctermfg=206 guifg=#ff5fd7 " call out current line number
 
-  set colorcolumn=80 " Show where 80 characters is
-  highlight ColorColumn ctermbg=233 guibg=#121212
+  " set colorcolumn=80 " Show where 80 characters is
+  " highlight ColorColumn ctermbg=233 guibg=#121212
 endif
 
 " Indenting rules, mostly for python
@@ -105,31 +107,11 @@ ino <C-k> <C-o>gk
 ino <up> <C-o>gk
 ino <C-l> <Right>
 
-" Permanently highlight lines with <Leader> l
-nnoremap <silent> <Leader>l :exe "let m = matchadd('WildMenu','\\%" . line('.') . "l')"<CR>
-
-" Press space to turn off highlighting and clear any message already displayed.
-nnoremap <silent> <Space> :call clearmatches()<CR>:nohlsearch<Bar>:echo<CR>
+" Press Enter to turn off highlighting and clear any message already displayed.
+nnoremap <silent> <CR> :call clearmatches()<CR>:nohlsearch<Bar>:echo<CR>
 
 " Enter in normal mode creates an empty line underneath without moving the cursor
 " noremap <CR> mlo<Esc>`l
-
-" Use enter to insert newlines in normal mode, but not in quickfix.
-" Makes an empty line below or above current line without moving the cursor
-function! s:insert_line(direction)
-  if &buftype == "quickfix"
-    execute "normal! \<Enter>"
-  else
-    if a:direction == 'below'
-      execute "normal! mlo\<Esc>`l"
-    else
-      execute "normal! mlO\<Esc>`l"
-    endif
-  endif
-endfunction
-
-nmap <Enter> :call <SID>insert_line('below')<CR>
-nmap <S-Enter> :call <SID>insert_line('above')<CR>
 
 " Remap tab to indent, backspace to unindent
 nnoremap <BS> <<
@@ -211,114 +193,45 @@ endif
 set guitablabel=%t
 
 " Python macros too small to be used with snipmates
-noremap <leader>pd <Esc>iimport pdb; pdb.set_trace()<Esc>
-noremap <leader>pp <Esc>ifrom pprint import pprint<CR>pprint()<Esc>i
-noremap <leader>pl <Esc>iimport logging; logging.basicConfig(level=logging.DEBUG, format='%(asctime )s - %(levelname)s - %(message)s')<Esc>
+" noremap <leader>pd <Esc>iimport pdb; pdb.set_trace()<Esc>
+" noremap <leader>pp <Esc>ifrom pprint import pprint<CR>pprint()<Esc>i
+" noremap <leader>pl <Esc>iimport logging; logging.basicConfig(level=logging.DEBUG, format='%(asctime )s - %(levelname)s - %(message)s')<Esc>
 
 
-" Installing add-ons and their configurations
-" ===========================================
+" automatically install vim-plug plugin manager on new vim instance
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin()
+    Plug 'tpope/vim-sensible'
+    Plug 'kana/vim-textobj-user' | Plug 'kana/vim-textobj-line' " required by vim-expand-region
+    Plug 'terryma/vim-expand-region' " smart growing selection
+    Plug 'Raimondi/delimitMate' " automatically close parens when typing
+    Plug 'vim-airline/vim-airline' " makes the vim statusbar pretty and useful
+    Plug 'vim-syntastic/syntastic' " does syntax highlighting and error checking automatically
+    Plug 'airblade/vim-gitgutter' " shows added/changed/removed lines in git
+    Plug 'henrik/vim-indexed-search' " shows 'match 123 out of 456' when searching
+    Plug 'tomtom/tcomment_vim' " allows commenting entire blocks
+    Plug 'danro/rename.vim' " rename a file you're working on with :rename[!] {newname}
+call plug#end()
 
 
-" Awesome awesome awesome package manager for vim scripts
-" Operative commands are :UninstallNotLoadedAddons and :UpdateAddons
-fun SetupVAM()
-    " YES, you can customize this vam_install_path path and everything still works!
-    let vam_install_path = expand('$HOME') . '/.vim/vim-addons'
-    exec 'set runtimepath+='.vam_install_path.'/vim-addon-manager'
+" vim-expand-region config
+map <Space> <Plug>(expand_region_expand)
+map <S-Space> <Plug>(expand_region_shrink)
 
-    " * unix based os users may want to use this code checking out VAM
-    " * windows users want to use http://mawercer.de/~marc/vam/index.php
-    "   to fetch VAM, VAM-known-repositories and the listed plugins
-    "   without having to install curl, unzip, git tool chain first
-    if !isdirectory(vam_install_path.'/vim-addon-manager') && 1 == confirm("git clone VAM into ".vam_install_path."?","&Y\n&N")
-        " I'm sorry having to add this reminder. Eventually it'll pay off.
-        call confirm("Remind yourself that most plugins ship with documentation (README*, doc/*.txt). Its your first source of knowledge. If you can't find the info you're looking for in reasonable time ask maintainers to improve documentation")
-        exec '!p='.shellescape(vam_install_path).'; mkdir -p "$p" && cd "$p" && git clone --depth 1 git://github.com/MarcWeber/vim-addon-manager.git'
-    endif
+" tComment config, allow simple and smart commenting
+nnoremap // :TComment<CR> 
+vnoremap // :TComment<CR>gv
 
-    call vam#ActivateAddons(["github:ervandew/supertab", "matchit.zip", "vim-less", "delimitMate", "Indent_Guides", "jQuery", "tComment", "IndexedSearch", "github:Glench/Vim-Jinja2-Syntax", "JavaScript_Indent", "github:briandoll/change-inside-surroundings.vim", "ctrlp", "github:scrooloose/syntastic", "vim-powerline", "Rename%1928", "github:majutsushi/tagbar", "grep", "JSON", "github:airblade/vim-gitgutter"], {'auto_install' : 0})
-    " sample: call vam#ActivateAddons(['pluginA','pluginB', ...], {'auto_install' : 0})
-    " where pluginA could be github:YourName or snipmate-snippets see vam#install#RewriteName()
-    " also see section "5. Installing plugins" in VAM's documentation
-    " which will tell you how to find the plugin names of a plugin
-endf
-call SetupVAM()
-    " experimental: run after gui has been started (gvim) [3]
-    " option1:  au VimEnter * call SetupVAM()
-    " option2:  au GUIEnter * call SetupVAM()
-    " See BUGS sections below [*]
+" DelimitMate config, make enter key keep indent in function
+let g:delimitMate_expand_cr = 1 " turn '(<cr>' into '(<cr>    |<cr>)'
 
-" CtrlP, quickly find and open files
-    " Replaces Command-T because it doesn't rely on Ruby
-    " http://kien.github.com/ctrlp.vim/
-    set wildignore+=*.o,*.obj,.git,.svn,*.pyc,*.png,*.jpg,*.gif
-    let g:ctrlp_map = '<leader>e'
-    let g:ctrlp_cmd = 'CtrlPMixed'
-    noremap <leader>r :CtrlPClearCache<cr> " refresh files / buffers
-    let g:ctrlp_max_height = 15
-    let g:ctrlp_max_files = 20000
-    let g:ctrlp_working_path_mode = 0 " fix slightly annoying behavior with svn projects
+" Syntastic config, use non-annoying linter
+" @TODO: make expand work within js functions better, select function
+" @TODO: stop horrible html syntastic, block/inline elements
+let g:syntastic_html_tidy_quiet_messages = { "level" : "warnings" } " just shuts it off
 
-" SuperTab, good tab completion
-    " https://github.com/ervandew/supertab
-    let g:SuperTabCrMapping = 0 " this is to not conflict with delimitMate
-
-" matchit.zip, allows matching <> among other things
-    " http://www.vim.org/scripts/script.php?script_id=39
-
-" vim-less, syntax highlighting for lesscss
-    " https://github.com/groenewege/vim-less
-
-" delimitMate, adds good matching of parens, brackets, quotes, etc
-    " https://github.com/Raimondi/delimitMate
-    let g:delimitMate_expand_cr = 1 " turn '(<cr>' into '(<cr>    |<cr>)'
-    let g:delimitMate_expand_space = 1 " turn '( ' into '( | )'
-
-" Indent_Guides, visually show indents, <leader>ig to toggle
-    " https://github.com/nathanaelkane/vim-indent-guides
-    let g:indent_guides_guide_size = 1
-    let g:indent_guides_color_change_percent = 7
-    let g:indent_guides_enable_on_vim_startup = 0
-
-" jQuery, add better syntax highlighting
-    " https://github.com/itspriddle/vim-jquery
-    autocmd BufRead,BufNewFile *.js set ft=javascript syntax=jquery " set on all js
-
-" tComment, allow simple and smart commenting
-    " https://github.com/tomtom/tcomment_vim
-    nnoremap // :TComment<CR>
-    vnoremap // :TComment<CR>
-
-" IndexedSearch, add '<count> of <total>' when doing text searches
-    " https://github.com/vim-scripts/IndexedSearch
-
-" Vim-Jinja2-Syntax, syntax highlighting for Jinja2
-    " https://github.com/Glench/Vim-Jinja2-Syntax
-
-" Change-inside-surroundings, use <Leader>ci,ca to change surroundings
-    " https://github.com/briandoll/change-inside-surroundings.vim
-
-" Syntastic, syntax error / lint detector
-    " https://github.com/scrooloose/syntastic
-    let g:syntastic_check_on_open=1
-
-" Powerline, making vim's status bar awesome
-    " https://github.com/Lokaltog/vim-powerline"
-
-" Rename, easily rename a file inline
-    " http://www.vim.org/scripts/script.php?script_id=1928
-
-" TagBar, generate and jump through tags, needs ctags
-    " https://github.com/majutsushi/tagbar
-    nmap <Leader>o :TagbarToggle<CR>
-
-" Grep, search within projects from vim
-    nnoremap <silent> <Leader>g :Rgrep<CR>
-    let Grep_Find_Use_Xargs = 0 " for some reason fails on mac using xargs
-
-" JSON, syntax highlighting for JSON
-    " http://www.vim.org/scripts/script.php?script_id=1945
-
-" GitGutter, show git changes in files
-    " https://github.com/airblade/vim-gitgutter

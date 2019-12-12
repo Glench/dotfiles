@@ -27,7 +27,7 @@ alias ....='cd ../../../'
 alias .....='cd ../../../../'
 alias ......='cd ../../../../../'
 alias -- -="cd -" # - to go back
-alias site="ssh glench@carabiner.peeron.com"
+alias code='cd ~/code/'
 # narrow down ifconfig output to find roughly my ip
 alias myip="ifconfig | grep -E '(192|10)'"
 
