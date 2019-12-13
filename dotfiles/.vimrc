@@ -235,8 +235,3 @@ vnoremap // :TComment<CR>gv
 " DelimitMate config, make enter key keep indent in function
 let g:delimitMate_expand_cr = 1 " turn '(<cr>' into '(<cr>    |<cr>)'
 
-" Syntastic config, use non-annoying linter
-" @TODO: make expand work within js functions better, select function
-" @TODO: stop horrible html syntastic, block/inline elements
-let g:syntastic_html_tidy_quiet_messages = { "level" : "warnings" } " just shuts it off
-
