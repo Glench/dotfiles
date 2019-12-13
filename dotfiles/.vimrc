@@ -6,12 +6,10 @@ au CursorHold * checktime
 set background=dark
 
 let macvim_skip_colorscheme=1
+if has("gui_running")
+    colorscheme desert
+endif
 set guifont=Inconsolata:h15
-
-colorscheme desert
-
-
-
 
 
 " Highlight VCS conflict markers
@@ -26,7 +24,7 @@ set nocompatible      " Explicitly get out of vi-compatible mode
 set title             " Make terminal title file name
 set ruler             " Show line numbers subtly.
 set number            " Show line numbers
-highlight LineNr ctermfg=darkgrey guifg=darkgrey
+highlight LineNr ctermfg=darkgrey guifg=Grey
 set showcmd           " Show (partial) command in status line.
 set showmatch         " Show matching brackets.
 set ignorecase        " Do case insensitive matching
@@ -35,7 +33,7 @@ set incsearch         " Incremental search
 set hlsearch          " Hilight the search terms
 set cursorline        " Hilights the line the cursor's on
 highlight CursorLine term=NONE cterm=NONE ctermbg=233 guibg=#121212
-highlight SignColumn ctermbg=black guibg=black " fix ugly sign col colors
+" highlight SignColumn ctermbg=black guibg=black " fix ugly sign col colors
 set autoread          " auto-reload modified files with no local changes
 set lazyredraw        " do not redraw while running macros
 set mouse=a           " turn the mouse on for all modes
