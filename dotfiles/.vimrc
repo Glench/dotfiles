@@ -217,7 +217,6 @@ call plug#begin()
     Plug 'terryma/vim-expand-region' " smart growing selection
     Plug 'Raimondi/delimitMate' " automatically close parens when typing
     Plug 'vim-airline/vim-airline' " makes the vim statusbar pretty and useful
-    Plug 'vim-syntastic/syntastic' " does syntax highlighting and error checking automatically
     Plug 'airblade/vim-gitgutter' " shows added/changed/removed lines in git
     Plug 'henrik/vim-indexed-search' " shows 'match 123 out of 456' when searching
     Plug 'tomtom/tcomment_vim' " allows commenting entire blocks
