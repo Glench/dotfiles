@@ -92,6 +92,10 @@ endif
 " ==================
 
 
+" Remaps 'jj' in quick succession to <escape>
+ino jj <esc>
+cno jj <c-c>
+
 " navigate by visual lines in text wrap situations
 nmap <up> gk
 nmap k gk
@@ -137,7 +141,6 @@ nmap <leader>a :qa<cr>
 nmap <leader>1 :q!<cr>
 nmap <leader>a1 :qa!<cr>
 
-
 " When forgetting to sudo a file, use <Leader>! to save (or :w!!)
 cnoremap w!! w !sudo tee % >/dev/null
 nmap <Leader>! :w!!<cr>
@@ -149,9 +152,6 @@ nmap <leader><leader> <C-o>
 cnoremap <C-A>      <Home>
 cnoremap <C-E>      <End>
 
-" Remaps 'jj' in quick succession to <escape>
-ino jj <esc>
-cno jj <c-c>
 
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
@@ -216,7 +216,7 @@ call plug#begin()
     Plug 'tpope/vim-sensible'
     Plug 'kana/vim-textobj-user' | Plug 'kana/vim-textobj-line' " required by vim-expand-region
     Plug 'terryma/vim-expand-region' " smart growing selection
-    Plug 'Raimondi/delimitMate' " automatically close parens when typing
+    Plug 'Raimondi/delimitMate' " automatically close parens when typing, relies on vim-sensible for some reason
     Plug 'vim-airline/vim-airline' " makes the vim statusbar pretty and useful
     Plug 'airblade/vim-gitgutter' " shows added/changed/removed lines in git
     Plug 'henrik/vim-indexed-search' " shows 'match 123 out of 456' when searching
@@ -224,7 +224,7 @@ call plug#begin()
     Plug 'danro/rename.vim' " rename a file you're working on with :rename[!] {newname}
     Plug 'terryma/vim-smooth-scroll' " smooth-scrolling
     Plug 'luochen1990/rainbow' " unique coloring for nested parens and html tags
-    Plug 'lifepillar/vim-solarized8' " nice colors
+    Plug 'lifepillar/vim-solarized8' " nice theme
     Plug 'scrooloose/nerdtree' " tree explorer
     Plug 'godlygeek/tabular' " align lines
     Plug 'ryanpcmcquen/fix-vim-pasting' " detects when pasting and turns on paste mode
