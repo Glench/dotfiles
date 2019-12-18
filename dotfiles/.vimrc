@@ -6,11 +6,7 @@ au CursorHold * checktime
 set background=dark
 
 let macvim_skip_colorscheme=1
-if has("gui_running")
-    colorscheme desert
-endif
 set guifont=Inconsolata:h15
-
 
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
@@ -58,7 +54,7 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 " Default tab completion:
-imap <Tab> <C-P> 
+imap <Tab> <C-P>
 " Show menu
 set completeopt=menu,preview
 
@@ -68,7 +64,7 @@ set listchars=tab:>- " show tabs and trailing space
 set invlist    " Show invisible chars, useful for finding tabs
 " (XXX: #VIM/tpope warns the line below could break things)
 set iskeyword+=$,@,%,# " none of these are word dividers
-set scrolloff=7 " keep some lines at top/bottom for scope
+set scrolloff=4 " keep some lines at top/bottom for scope
 
 " No sound on errors
 set noerrorbells
@@ -112,7 +108,7 @@ ino <up> <C-o>gk
 ino <C-l> <Right>
 
 " Press Enter to turn off highlighting and clear any message already displayed.
-nnoremap <silent> <CR> :call clearmatches()<CR>:nohlsearch<Bar>:echo<CR>
+nnoremap <silent> <Space> :call clearmatches()<CR>:nohlsearch<Bar>:echo<CR>
 
 " Enter in normal mode creates an empty line underneath without moving the cursor
 " noremap <CR> mlo<Esc>`l
@@ -138,9 +134,13 @@ nmap <leader>a :qa<cr>
 nmap <leader>1 :q!<cr>
 nmap <leader>a1 :qa!<cr>
 
+
 " When forgetting to sudo a file, use <Leader>! to save (or :w!!)
 cnoremap w!! w !sudo tee % >/dev/null
 nmap <Leader>! :w!!<cr>
+
+" jump to previous cursor locations. Useful when searching text
+nmap <leader><leader> <C-o>
 
 " Bash like keys for the command line
 cnoremap <C-A>      <Home>
@@ -217,19 +217,55 @@ call plug#begin()
     Plug 'vim-airline/vim-airline' " makes the vim statusbar pretty and useful
     Plug 'airblade/vim-gitgutter' " shows added/changed/removed lines in git
     Plug 'henrik/vim-indexed-search' " shows 'match 123 out of 456' when searching
-    Plug 'tomtom/tcomment_vim' " allows commenting entire blocks
+    Plug 'tomtom/tcomment_vim' " allows commenting entire blocks in visual selection
     Plug 'danro/rename.vim' " rename a file you're working on with :rename[!] {newname}
+    Plug 'terryma/vim-smooth-scroll' " smooth-scrolling
+    Plug 'luochen1990/rainbow' " unique coloring for nested parens and html tags
+    Plug 'lifepillar/vim-solarized8' " nice colors
+    Plug 'scrooloose/nerdtree' " tree explorer
+    Plug 'godlygeek/tabular' " align lines
 call plug#end()
+" profile with vim --startuptime ~/tmp/vim.log
+" from https://kynan.github.io/blog/2015/07/31/how-to-speed-up-your-vim-startup-time
 
+colorscheme solarized8
 
 " vim-expand-region config
-map <Space> <Plug>(expand_region_expand)
-map <S-Space> <Plug>(expand_region_shrink)
+" TODO: fix expand selection so it gets right things in e.g. javascript
+xmap v <Plug>(expand_region_expand) " vv to expand
+xmap V <Plug>(expand_region_shrink)
 
 " tComment config, allow simple and smart commenting
-nnoremap // :TComment<CR> 
+nnoremap // :TComment<CR>
 vnoremap // :TComment<CR>gv
 
 " DelimitMate config, make enter key keep indent in function
 let g:delimitMate_expand_cr = 1 " turn '(<cr>' into '(<cr>    |<cr>)'
 
+" vim-smooth-scroll
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+
+" rainbow parens
+let g:rainbow_active = 1
+
+" nerdtree, open up automatically when opening a directory
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+
+" TODO: figure out how to use nerdtree with new tabs instead of buffers?
+" TODO: how to have cursor in nerdtree by default when opening a directory
+"
+" TODO: pick better git-gutter shortcuts because it's super useful
+" nmap ]c <Plug>GitGutterNextHunk
+" nmap [c <Plug>GitGutterPrevHunk
+" nmap <Leader>hs <Plug>GitGutterStageHunk
+" nmap <Leader>hu <Plug>GitGutterUndoHunk
+
+" TODO: figure out why this isn't working, from http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
+if exists(":Tabularize")
+    nmap <Leader>= :Tabularize /=<CR>
+    vmap <Leader>= :Tabularize /=<CR>
+    nmap <Leader>: :Tabularize /:\zs<CR>
+    vmap <Leader>: :Tabularize /:\zs<CR>
+endif

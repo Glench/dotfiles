@@ -2,6 +2,7 @@
 
 set editing-mode vi
 set keymap vi-insert
+"jj": vi-movement-mode
 
 # doc matches documents and Documents 
 set completion-ignore-case on
