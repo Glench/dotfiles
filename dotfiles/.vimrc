@@ -128,8 +128,11 @@ autocmd BufNew <buffer> call s:save_session()
 
 " Fast saving and quitting, with automatic vim session saving
 nmap <leader>w :w<cr>
+vmap <leader>w :w<cr>
 nmap <leader>wq :wq!<cr>
+vmap <leader>wq :wq!<cr>
 nmap <leader>q :q<cr>
+vmap <leader>q :q<cr>
 nmap <leader>a :qa<cr>
 nmap <leader>1 :q!<cr>
 nmap <leader>a1 :qa!<cr>
@@ -224,6 +227,7 @@ call plug#begin()
     Plug 'lifepillar/vim-solarized8' " nice colors
     Plug 'scrooloose/nerdtree' " tree explorer
     Plug 'godlygeek/tabular' " align lines
+    Plug 'ryanpcmcquen/fix-vim-pasting' " detects when pasting and turns on paste mode
 call plug#end()
 " profile with vim --startuptime ~/tmp/vim.log
 " from https://kynan.github.io/blog/2015/07/31/how-to-speed-up-your-vim-startup-time
@@ -232,8 +236,8 @@ colorscheme solarized8
 
 " vim-expand-region config
 " TODO: fix expand selection so it gets right things in e.g. javascript
-xmap v <Plug>(expand_region_expand) " vv to expand
-xmap V <Plug>(expand_region_shrink)
+vmap v <Plug>(expand_region_expand)
+vmap V <Plug>(expand_region_shrink)
 
 " tComment config, allow simple and smart commenting
 nnoremap // :TComment<CR>
@@ -256,16 +260,19 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 " TODO: figure out how to use nerdtree with new tabs instead of buffers?
 " TODO: how to have cursor in nerdtree by default when opening a directory
 "
-" TODO: pick better git-gutter shortcuts because it's super useful
-" nmap ]c <Plug>GitGutterNextHunk
-" nmap [c <Plug>GitGutterPrevHunk
+" moving between diffs from git and undoing them to match what's currently in git
+nmap <leader>gj <Plug>(GitGutterNextHunk)
+nmap <leader>gk <Plug>(GitGutterPrevHunk)
+nmap <leader>gu <Plug>(GitGutterUndoHunk)
 " nmap <Leader>hs <Plug>GitGutterStageHunk
-" nmap <Leader>hu <Plug>GitGutterUndoHunk
 
-" TODO: figure out why this isn't working, from http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
-if exists(":Tabularize")
-    nmap <Leader>= :Tabularize /=<CR>
-    vmap <Leader>= :Tabularize /=<CR>
-    nmap <Leader>: :Tabularize /:\zs<CR>
-    vmap <Leader>: :Tabularize /:\zs<CR>
-endif
+" Align variable declarations (=), colon-separated dictionary items (:), and pipe-separated items (|)
+nmap <Leader>= :Tabularize /=<CR>
+vmap <Leader>= :Tabularize /=<CR>
+nmap <Leader>: :Tabularize /:\zs<CR>
+vmap <Leader>: :Tabularize /:\zs<CR>
+nmap <Leader>: :Tabularize /\|<CR>
+vmap <Leader>: :Tabularize /\|<CR>
+
+
+" TODO: figure out correct copy/pasting, probably this: https://github.com/enricobacis/paste.vim
