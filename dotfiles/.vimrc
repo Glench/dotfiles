@@ -214,16 +214,15 @@ endif
 
 call plug#begin()
     Plug 'tpope/vim-sensible'
-    Plug 'kana/vim-textobj-user' | Plug 'kana/vim-textobj-line' " required by vim-expand-region
-    Plug 'terryma/vim-expand-region' " smart growing selection
     Plug 'Raimondi/delimitMate' " automatically close parens when typing, relies on vim-sensible for some reason
+    Plug 'gorkunov/smartpairs.vim' " select between parens/quotes/brackets/etc with `vv`
+    Plug 'luochen1990/rainbow' " unique coloring for nested parens and html tags
     Plug 'vim-airline/vim-airline' " makes the vim statusbar pretty and useful
     Plug 'airblade/vim-gitgutter' " shows added/changed/removed lines in git
     Plug 'henrik/vim-indexed-search' " shows 'match 123 out of 456' when searching
     Plug 'tomtom/tcomment_vim' " allows commenting entire blocks in visual selection
     Plug 'danro/rename.vim' " rename a file you're working on with :rename[!] {newname}
     Plug 'terryma/vim-smooth-scroll' " smooth-scrolling
-    Plug 'luochen1990/rainbow' " unique coloring for nested parens and html tags
     Plug 'lifepillar/vim-solarized8' " nice theme
     Plug 'scrooloose/nerdtree' " tree explorer
     Plug 'godlygeek/tabular' " align lines
@@ -233,11 +232,6 @@ call plug#end()
 " from https://kynan.github.io/blog/2015/07/31/how-to-speed-up-your-vim-startup-time
 
 colorscheme solarized8
-
-" vim-expand-region config
-" TODO: fix expand selection so it gets right things in e.g. javascript
-vmap v <Plug>(expand_region_expand)
-vmap V <Plug>(expand_region_shrink)
 
 " tComment config, allow simple and smart commenting
 nnoremap // :TComment<CR>
