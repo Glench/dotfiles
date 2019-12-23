@@ -228,6 +228,8 @@ call plug#begin()
     Plug 'godlygeek/tabular' " align lines
     Plug 'ryanpcmcquen/fix-vim-pasting' " detects when pasting and turns on paste mode
     Plug 'sheerun/vim-polyglot' " syntax highlighting for every language
+    Plug '/usr/local/opt/fzf' " installed via apt or homebrew
+    Plug 'junegunn/fzf.vim' " very fast fuzzy file searching
 call plug#end()
 " profile with vim --startuptime ~/tmp/vim.log
 " from https://kynan.github.io/blog/2015/07/31/how-to-speed-up-your-vim-startup-time
@@ -268,6 +270,9 @@ nmap <Leader>: :Tabularize /:\zs<CR>
 vmap <Leader>: :Tabularize /:\zs<CR>
 nmap <Leader>: :Tabularize /\|<CR>
 vmap <Leader>: :Tabularize /\|<CR>
+
+" open new files with fuzzy searching
+nmap <Leader>e :Files<CR>
 
 
 " TODO: figure out correct copy/pasting, probably this: https://github.com/enricobacis/paste.vim
