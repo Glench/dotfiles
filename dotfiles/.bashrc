@@ -135,6 +135,9 @@ if [[ -e /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]]; then
     source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 fi
 
+# install awesome fuzzy-finding with fzf, replace searching history / tab completion with **
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 # Change UI
 # =========
 
@@ -229,3 +232,4 @@ else
 
     PROMPT_COMMAND=prompt_command
 fi
+
