@@ -227,6 +227,7 @@ call plug#begin()
     Plug 'scrooloose/nerdtree' " tree explorer
     Plug 'godlygeek/tabular' " align lines
     Plug 'ryanpcmcquen/fix-vim-pasting' " detects when pasting and turns on paste mode
+    Plug 'sheerun/vim-polyglot' " syntax highlighting for every language
 call plug#end()
 " profile with vim --startuptime ~/tmp/vim.log
 " from https://kynan.github.io/blog/2015/07/31/how-to-speed-up-your-vim-startup-time

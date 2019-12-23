@@ -31,15 +31,6 @@ alias code='cd ~/code/'
 # narrow down ifconfig output to find roughly my ip
 alias myip="ifconfig | grep -E '(192|10)'"
 
-irc() {
-    command -v mosh >/dev/null 2>&1;
-    mosh=$?;
-    if [[ $mosh -eq 0 ]]; then
-        mosh glench@staticfree.info -- screen -dRU
-    else
-        ssh -t glench@staticfree.info screen -dRU
-    fi
-}
 tmp() {
     if [[ -d ~/tmp ]]; then
         cd ~/tmp;
