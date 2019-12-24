@@ -224,10 +224,10 @@ call plug#begin()
     Plug 'danro/rename.vim' " rename a file you're working on with :rename[!] {newname}
     Plug 'terryma/vim-smooth-scroll' " smooth-scrolling
     Plug 'lifepillar/vim-solarized8' " nice theme
-    Plug 'scrooloose/nerdtree' " tree explorer
+    Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " tree explorer
     Plug 'godlygeek/tabular' " align lines
     Plug 'ryanpcmcquen/fix-vim-pasting' " detects when pasting and turns on paste mode
-    Plug 'sheerun/vim-polyglot' " syntax highlighting for every language
+    Plug 'sheerun/vim-polyglot' " syntax highlighting for every language, run on demand
     Plug '/usr/local/opt/fzf' " installed via apt or homebrew
     Plug 'junegunn/fzf.vim' " very fast fuzzy file searching
 call plug#end()
