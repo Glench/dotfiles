@@ -227,9 +227,9 @@ call plug#begin()
     Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " tree explorer
     Plug 'godlygeek/tabular' " align lines
     Plug 'ryanpcmcquen/fix-vim-pasting' " detects when pasting and turns on paste mode
-    Plug 'sheerun/vim-polyglot' " syntax highlighting for every language, run on demand
+    Plug 'sheerun/vim-polyglot' " syntax highlighting for every language, run on demand for better startup time
     Plug '/usr/local/opt/fzf' " installed via apt or homebrew
-    Plug 'junegunn/fzf.vim' " very fast fuzzy file searching
+    Plug 'junegunn/fzf.vim' " very fast fuzzy file searching with <leader>e
 call plug#end()
 " profile with vim --startuptime ~/tmp/vim.log
 " from https://kynan.github.io/blog/2015/07/31/how-to-speed-up-your-vim-startup-time
