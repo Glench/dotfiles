@@ -22,7 +22,8 @@ set ruler             " Show line numbers subtly.
 set number            " Show line numbers
 highlight LineNr ctermfg=darkgrey guifg=Grey
 set showcmd           " Show (partial) command in status line.
-set showmatch         " Show matching brackets.
+" set showmatch         " Show matching brackets. Turned off because it makes
+" typing > or < in JS in script tags beep.
 set ignorecase        " Do case insensitive matching
 set smartcase         " Do smart case matching
 set incsearch         " Incremental search
