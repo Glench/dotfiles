@@ -54,7 +54,8 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 " Default tab completion:
-imap <Tab> <C-P>
+" imap <Tab> <C-P> " Don't use this since it autocompletes always in insert
+" mode instead of inserting tabs which is really annoying.
 " Show menu
 set completeopt=menu,preview
 
@@ -230,6 +231,7 @@ call plug#begin()
     Plug 'sheerun/vim-polyglot' " syntax highlighting for every language, run on demand for better startup time
     Plug '/usr/local/opt/fzf' " installed via apt or homebrew
     Plug 'junegunn/fzf.vim' " very fast fuzzy file searching with <leader>e
+    Plug 'ervandew/supertab' " add smart tab completion
 call plug#end()
 " profile with vim --startuptime ~/tmp/vim.log
 " from https://kynan.github.io/blog/2015/07/31/how-to-speed-up-your-vim-startup-time
