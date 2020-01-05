@@ -217,11 +217,10 @@ call plug#begin()
     Plug 'tpope/vim-sensible'
     Plug 'Raimondi/delimitMate' " automatically close parens when typing, relies on vim-sensible for some reason
     Plug 'gorkunov/smartpairs.vim' " select between parens/quotes/brackets/etc with `vv`
-    Plug 'luochen1990/rainbow' " unique coloring for nested parens and html tags
     Plug 'vim-airline/vim-airline' " makes the vim statusbar pretty and useful
     Plug 'airblade/vim-gitgutter' " shows added/changed/removed lines in git
     Plug 'henrik/vim-indexed-search' " shows 'match 123 out of 456' when searching
-    Plug 'tomtom/tcomment_vim' " allows commenting entire blocks in visual selection
+    Plug 'tomtom/tcomment_vim' " allows commenting lines in visual and normal modes with //
     Plug 'danro/rename.vim' " rename a file you're working on with :rename[!] {newname}
     Plug 'terryma/vim-smooth-scroll' " smooth-scrolling
     Plug 'lifepillar/vim-solarized8' " nice theme
@@ -229,6 +228,7 @@ call plug#begin()
     Plug 'godlygeek/tabular' " align lines
     Plug 'ryanpcmcquen/fix-vim-pasting' " detects when pasting and turns on paste mode
     Plug 'sheerun/vim-polyglot' " syntax highlighting for every language, run on demand for better startup time
+    Plug 'luochen1990/rainbow' " unique coloring for nested parens and html tags
     Plug '/usr/local/opt/fzf' " installed via apt or homebrew
     Plug 'junegunn/fzf.vim' " very fast fuzzy file searching with <leader>e
     Plug 'ervandew/supertab' " add smart tab completion
