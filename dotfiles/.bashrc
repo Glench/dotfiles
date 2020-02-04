@@ -13,7 +13,7 @@ HISTSIZE=1000000 # 1 million lines in history, why not?
 # ls
 alias ll='ls -alF'
 alias la='ls -A'
-alias ld='nnn'
+alias lf='nnn'
 if [[ $(uname) = 'Darwin' ]]; then
     alias ls='ls -p'
 else

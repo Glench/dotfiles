@@ -5,7 +5,7 @@ crontab cron
 
 if [ "$(uname)" == "Darwin" ]; then
     # Do something under Mac OS X platform
-    brew install nnn fzf
+    brew install nnn fzf wget ffmpeg
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     # Do something under GNU/Linux platform
     sudo apt-get install nnn 
