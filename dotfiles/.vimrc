@@ -176,26 +176,32 @@ map <Leader>k :tabnext<CR>
 " toggle pastemode
 set pastetoggle=<Leader>p
 
+" copy entire file to system clipboard
+map <Leader>c :%y+<CR>
+
 " copy/cut/paste to system clipboard with Control + c/x/v, respectively
 if has("unix")
-    let s:uname = system("uname")
-    " detect OSX (kind of a hack, but works)
-    if s:uname == "Darwin\n"
-        vnoremap <C-c> !pbcopy<CR>:undo<CR>
-        " copy the current line but don't copy the indents in the line and keep cursor in same position
-        nnoremap <C-c> mm^v$!pbcopy<CR>:undo<CR>`m
-        vnoremap <C-x> !pbcopy<CR>
-        inoremap <C-v> <Esc>:r!pbpaste<CR>a
-        " note that this overwrites visual block selection
-    else
+    " let s:uname = system("uname")
+    " " detect OSX (kind of a hack, but works)
+    " if s:uname == "Darwin\n"
+    "     vnoremap <C-c> !pbcopy<CR>:undo<CR>
+    "     " copy the current line but don't copy the indents in the line and keep cursor in same position
+    "     nnoremap <C-c> mm^v$!pbcopy<CR>:undo<CR>`m
+    "     vnoremap <C-x> !pbcopy<CR>
+    "     inoremap <C-v> <Esc>:r!pbpaste<CR>a
+    "     " note that this overwrites visual block selection
+    " else
         " if not OSX, just try to use the special system clipboard buffer
+
+        " Actually, on OSX the following commands seem to work just fine.
         vnoremap <C-c> "+y
-        nnoremap <C-c> mm^v$"+y`m " copy current line
+        " copy current line
+        nnoremap <C-c> mm^v$"+y`mh
         vnoremap <C-x> "+d
         nnoremap <C-v> "+p
         inoremap <C-v> <Esc>"+pa
         " note that this overwrites visual block selection
-    endif
+    " endif
 endif
 
 " Make better-named tabs
