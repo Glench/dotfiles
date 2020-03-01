@@ -11,6 +11,7 @@ HISTSIZE=1000000 # 1 million lines in history, why not?
 
 
 # ls
+export CLICOLOR=1 # helps ls show up with colors on Mac
 alias ll='ls -alF'
 alias la='ls -A'
 alias lf='nnn'
