@@ -5,7 +5,8 @@ crontab cron
 
 if [ "$(uname)" == "Darwin" ]; then
     # Do something under Mac OS X platform
-    brew install nnn fzf wget ffmpeg youtube-dl
+    brew install nnn fzf wget ffmpeg youtube-dl macvim
+    brew cask install mounty
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     # Do something under GNU/Linux platform
     sudo apt-get install nnn 

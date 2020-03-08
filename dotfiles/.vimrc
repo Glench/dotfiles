@@ -6,7 +6,7 @@ au CursorHold * checktime
 set background=dark
 
 let macvim_skip_colorscheme=1
-set guifont=Inconsolata:h15
+set guifont=JetBrainsMono-Regular:h13
 
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'

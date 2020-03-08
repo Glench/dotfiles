@@ -6,6 +6,7 @@
 export EDITOR="vim"
 export PAGER="less"
 export PYTHONSTARTUP=~/.pythonrc.py
+export LSCOLORS=GxFxCxDxBxegedabagaced
 
 if [[ -f ~/.bashrc ]]; then
     source ~/.bashrc
