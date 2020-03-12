@@ -231,6 +231,7 @@ call plug#begin()
     Plug 'danro/rename.vim' " rename a file you're working on with :rename[!] {newname}
     Plug 'terryma/vim-smooth-scroll' " smooth-scrolling
     Plug 'lifepillar/vim-solarized8' " nice theme
+    " Plug 'kaicataldo/material.vim'
     Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " tree explorer
     Plug 'godlygeek/tabular' " align lines
     Plug 'ryanpcmcquen/fix-vim-pasting' " detects when pasting and turns on paste mode
@@ -244,6 +245,9 @@ call plug#end()
 " profile with vim --startuptime ~/tmp/vim.log
 " from https://kynan.github.io/blog/2015/07/31/how-to-speed-up-your-vim-startup-time
 
+if (has('termguicolors'))
+  set termguicolors
+endif
 colorscheme solarized8
 
 " tComment config, allow simple and smart commenting
