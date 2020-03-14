@@ -148,11 +148,15 @@ doit() {
     mkcd $id && cp -r ~/dotfiles/bootstrap/* . && vim index.html
 }
 svelte_bootstrap() {
-    npx degit Glench/template $1
-    cd $1
+    npx degit Glench/template ${1:-svelte-app}
+    cd ${1-svelte-app}
     npm install
-    code .
-    code src/App.svelte
+    mvim src/App.svelte
+    sleep 3 && open -a Firefox 'http://localhost:5000' &
+    npm run dev
+    echo -e '\n\n'
+    echo 'to build optimized project: npm run build'
+    echo 'to run dev server: npm run dev'
 }
 
 # virtualenvwrapper
