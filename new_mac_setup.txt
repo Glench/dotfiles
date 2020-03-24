@@ -1,0 +1,36 @@
+New mac setup:
+- install firefox
+- customize trackpad:
+    - click to tap, turn off most gestures, force click off
+- install jitouch
+    - one fix left tap previous tab
+    - one fix right tap next tab
+    - three finger tap middle click
+    - three finger swipe up open recently closed tab
+    - three finger swipe down close/close tab
+- set capslock key as control key
+    - system preferences -> keyboard -> modifier keys
+- import tampermonkey scripts to firefox
+- install iterm2
+- install brew
+- mkdir ~/tmp
+    - cmd+shift+5 and choose ~/tmp as place to save screenshots
+- mkdir ~/code
+- install ssh key
+- install dot files: http://github.com/glench/dotfiles
+    - ./install.sh
+- set up read/write ntfs drives (https://github.com/osxfuse/osxfuse/wiki/NTFS-3G)
+    - Cataline instructions: https://github.com/osxfuse/osxfuse/wiki/NTFS-3G#auto-mount-ntfs-volumes-in-read-write-mode-on-macos-1015-catalina
+- install jetbrains mono font
+- install cinchy (key in email)
+- install backblaze
+- install steam
+- install google play music desktop player
+- install google music manager
+- install vlc
+- install signal
+- install zoom
+- install transmission
+- install exodus
+- install trinity
+- install app store apps (amphetamine, unarchiver, table tool)
