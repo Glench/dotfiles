@@ -11,7 +11,9 @@ New mac setup:
 - set capslock key as control key
     - system preferences -> keyboard -> modifier keys
 - import tampermonkey scripts to firefox
+- install jetbrains mono font
 - install iterm2
+    - install iterm2.json from dotfiles for appearance
 - install brew
 - mkdir ~/tmp
     - cmd+shift+5 and choose ~/tmp as place to save screenshots
@@ -21,7 +23,6 @@ New mac setup:
     - ./install.sh
 - set up read/write ntfs drives (https://github.com/osxfuse/osxfuse/wiki/NTFS-3G)
     - Cataline instructions: https://github.com/osxfuse/osxfuse/wiki/NTFS-3G#auto-mount-ntfs-volumes-in-read-write-mode-on-macos-1015-catalina
-- install jetbrains mono font
 - install cinchy (key in email)
 - install backblaze
 - install steam
