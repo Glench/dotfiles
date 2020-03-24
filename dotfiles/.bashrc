@@ -101,12 +101,12 @@ alias beep='echo -e "\a"; afplay /System/Library/Sounds/Glass.aiff;'
 # wptitle    = only show title in output, not categories
 # wplink     = turn output into a link to wikipedia to click to see what a thing is
 
-alias wp="cat ~/wiki_title_categories.txt"
-alias wptitle="egrep -o '^.*:::' | egrep -o '^.*[^:::]'"
-alias wplink="sed -E 's/(.*)/\1                 https:\/\/en\.wikipedia\.org\/w\/index\.php\?title=Special:Search\&search=\1/' | sed -E 's/ /\+/g'"
-function wpcategory {
-    egrep -i ":::.*$1"
-}
+# alias wp="cat ~/wiki_title_categories.txt"
+# alias wptitle="egrep -o '^.*:::' | egrep -o '^.*[^:::]'"
+# alias wplink="sed -E 's/(.*)/\1                 https:\/\/en\.wikipedia\.org\/w\/index\.php\?title=Special:Search\&search=\1/' | sed -E 's/ /\+/g'"
+# function wpcategory {
+#     egrep -i ":::.*$1"
+# }
 
 # end mystery hunt stuff
 
