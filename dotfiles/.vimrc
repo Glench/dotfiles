@@ -286,7 +286,7 @@ nmap <Leader><Bar> :Tabularize/<Bar><CR>
 vmap <Leader><Bar> :Tabularize/<Bar><CR>
 "    <Leader>|
 
-" open new files with fuzzy searching
+" open new files with fuzzy searching fzf
 nmap <Leader>e :Files<CR>
 
 
