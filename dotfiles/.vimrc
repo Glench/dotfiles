@@ -282,8 +282,9 @@ nmap <Leader>= :Tabularize /=<CR>
 vmap <Leader>= :Tabularize /=<CR>
 nmap <Leader>: :Tabularize /:\zs<CR>
 vmap <Leader>: :Tabularize /:\zs<CR>
-nmap <Leader>: :Tabularize /\|<CR>
-vmap <Leader>: :Tabularize /\|<CR>
+nmap <Leader><Bar> :Tabularize/<Bar><CR>
+vmap <Leader><Bar> :Tabularize/<Bar><CR>
+"    <Leader>|
 
 " open new files with fuzzy searching
 nmap <Leader>e :Files<CR>
