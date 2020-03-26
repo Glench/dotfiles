@@ -141,6 +141,22 @@ if [[ -e /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]]; then
     source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 fi
 
+# https://github.com/gokcehan/lf/blob/master/etc/lfcd.sh
+lfcd () {
+    tmp="$(mktemp)"
+    lf -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp"
+        if [ -d "$dir" ]; then
+            if [ "$dir" != "$(pwd)" ]; then
+                cd "$dir"
+            fi
+        fi
+    fi
+}
+alias lf=lfcd
+
 # install awesome fuzzy-finding with fzf, replace searching history / tab completion with **
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 

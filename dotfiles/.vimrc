@@ -233,6 +233,7 @@ call plug#begin()
     Plug 'lifepillar/vim-solarized8' " nice theme
     " Plug 'kaicataldo/material.vim'
     Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " tree explorer
+    Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeToggle'} " open new tabs with nerdtree open
     Plug 'godlygeek/tabular' " align lines
     Plug 'ryanpcmcquen/fix-vim-pasting' " detects when pasting and turns on paste mode
     Plug 'sheerun/vim-polyglot' " syntax highlighting for every language, run on demand for better startup time
@@ -268,9 +269,9 @@ let g:rainbow_active = 1
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 
-" TODO: figure out how to use nerdtree with new tabs instead of buffers?
+" TODO: figure out how to have nerdtreetabs open by default
 " TODO: how to have cursor in nerdtree by default when opening a directory
-"
+
 " moving between diffs from git and undoing them to match what's currently in git
 nmap <leader>gj <Plug>(GitGutterNextHunk)
 nmap <leader>gk <Plug>(GitGutterPrevHunk)

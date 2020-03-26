@@ -1,7 +1,7 @@
 #!/bin/bash
 # have to pattern match because * won't find dot files
 cp -r dotfiles/.[a-zA-Z0-9]* ~/
-cp dotfiles/lfrc ~/.config/lf
+cp dotfiles/lfrc ~/.config/lf/
 crontab cron
 
 if [ "$(uname)" == "Darwin" ]; then
