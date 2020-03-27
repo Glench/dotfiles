@@ -2,3 +2,4 @@
 # min hour dom month "day of week sun=0"
 0 0 * * * if [[ -d ~/tmp  ]]; then find ~/tmp -type d -ctime +28 -d -exec rm -r {} \; ; fi; # remove old directories
 0 0 * * * if [[ -d ~/tmp  ]]; then find ~/tmp -type f -ctime +28 -d -exec rm {} \; ; fi; # remove old files
+30 18 * * * python3 ~/code/PyInstaStories/pyinstastories.py --batch-file ~/code/PyInstaStories/usernames.txt
