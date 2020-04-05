@@ -1,2 +1,3 @@
-push m-
-map Q push '-q
+push mw
+map Q quit
+map q push 'w:quit<enter>
