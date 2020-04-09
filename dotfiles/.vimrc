@@ -242,6 +242,7 @@ call plug#begin()
     Plug 'junegunn/fzf.vim' " very fast fuzzy file searching with <leader>e
     Plug 'ervandew/supertab' " add smart tab completion
     Plug 'Glench/Vim-Jinja2-Syntax' " testing jinja support
+    Plug 'embear/vim-localvimrc' " project-specific vimrcs
 call plug#end()
 " profile with vim --startuptime ~/tmp/vim.log
 " from https://kynan.github.io/blog/2015/07/31/how-to-speed-up-your-vim-startup-time
