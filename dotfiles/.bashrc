@@ -14,6 +14,7 @@ HISTSIZE=1000000 # 1 million lines in history, why not?
 export CLICOLOR=1 # helps ls show up with colors on Mac
 alias ll='ls -alF'
 alias la='ls -A'
+alias cat='bat' # bat is a more friendly cat
 
 if [[ $(uname) = 'Darwin' ]]; then
     alias ls='ls -p'

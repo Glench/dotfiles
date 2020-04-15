@@ -23,7 +23,7 @@ New mac setup:
     - ./install.sh
 - set up read/write ntfs drives (https://github.com/osxfuse/osxfuse/wiki/NTFS-3G)
     - Cataline instructions: https://github.com/osxfuse/osxfuse/wiki/NTFS-3G#auto-mount-ntfs-volumes-in-read-write-mode-on-macos-1015-catalina
-- install cinchy (key in email)
+- install cinch (key in email) or Rectangle
 - install backblaze
 - install steam
 - install google play music desktop player
