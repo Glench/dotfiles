@@ -291,5 +291,5 @@ vmap <Leader><Bar> :Tabularize/<Bar><CR>
 " open new files with fuzzy searching fzf
 nmap <Leader>e :Files<CR>
 
-
-" TODO: figure out correct copy/pasting, probably this: https://github.com/enricobacis/paste.vim
+" if there's an .lvimrc (project-specific vimrc) just use it without asking
+let g:localvimrc_ask = 0
