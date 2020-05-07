@@ -240,6 +240,7 @@ call plug#begin()
     Plug 'luochen1990/rainbow' " unique coloring for nested parens and html tags
     Plug '/usr/local/opt/fzf' " installed via apt or homebrew
     Plug 'junegunn/fzf.vim' " very fast fuzzy file searching with <leader>e
+    Plug 'jremmen/vim-ripgrep' " search in files
     Plug 'ervandew/supertab' " add smart tab completion
     Plug 'Glench/Vim-Jinja2-Syntax' " testing jinja support
     Plug 'embear/vim-localvimrc' " project-specific vimrcs
@@ -293,3 +294,8 @@ nmap <Leader>e :Files<CR>
 
 " if there's an .lvimrc (project-specific vimrc) just use it without asking
 let g:localvimrc_ask = 0
+
+" ripgrep
+let g:rg_highlight = 1
+nmap <Leader>f :Rg 
+vmap <Leader>f :Rg
