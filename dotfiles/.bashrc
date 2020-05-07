@@ -160,6 +160,7 @@ alias lf=lfcd
 
 # install awesome fuzzy-finding with fzf, replace searching history / tab completion with **
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_COMMAND='fd --type f' # respect .gitignore so node_modules doesn't get searched
 
 # Change UI
 # =========
