@@ -6,7 +6,7 @@ crontab cron
 
 if [ "$(uname)" == "Darwin" ]; then
     # Do something under Mac OS X platform
-    brew install fzf wget ffmpeg youtube-dl macvim ntfs-3g lf node ripgrep bat tldr fd
+    brew install fzf wget ffmpeg youtube-dl macvim ntfs-3g lf node ripgrep bat tldr fd grandperspective
     /usr/local/opt/fzf/install # reverse search and **
     cp dotfiles/jitouch.restart.plist ~/Library/LaunchAgents/
     launchctl load ~/Library/LaunchAgents/jitouch.restart.plist
