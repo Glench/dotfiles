@@ -118,7 +118,7 @@ fix_webcam() {
 doit() {
     # get up and running with a web page really quickly
     id=$(uuid)j
-    mkcd $id && cp -r ~/dotfiles/bootstrap/* . && vim index.html
+    mkcd site && cp -r ~/dotfiles/bootstrap/* . && mvim . index.html
 }
 svelte_bootstrap() {
     npx degit Glench/template ${1:-svelte-app}
