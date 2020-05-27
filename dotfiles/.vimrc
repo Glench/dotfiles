@@ -271,9 +271,6 @@ let g:rainbow_active = 1
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTreeTabsToggle' | wincmd p | ene | exe 'cd '.argv()[0] | endif
 
-" TODO: figure out how to have nerdtreetabs open by default
-" TODO: how to have cursor in nerdtree by default when opening a directory
-
 " moving between diffs from git and undoing them to match what's currently in git
 nmap <leader>gj <Plug>(GitGutterNextHunk)
 nmap <leader>gk <Plug>(GitGutterPrevHunk)

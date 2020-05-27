@@ -124,8 +124,8 @@ svelte_bootstrap() {
     npx degit Glench/template ${1:-svelte-app}
     cd ${1-svelte-app}
     npm install
-    mvim src/App.svelte
-    sleep 3 && open -a Firefox 'http://localhost:5000' &
+    mvim .
+    sleep 2 && open -a Firefox 'http://localhost:5000' &
     npm run dev
     echo -e '\n\n'
     echo 'to build optimized project: npm run build'
