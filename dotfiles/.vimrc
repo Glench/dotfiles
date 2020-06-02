@@ -34,6 +34,7 @@ highlight CursorLine term=NONE cterm=NONE ctermbg=233 guibg=#121212
 set autoread          " auto-reload modified files with no local changes
 set lazyredraw        " do not redraw while running macros
 set mouse=a           " turn the mouse on for all modes
+map <MiddleMouse> <Nop> " stop accidental pasting
 set laststatus=2      " make sure to always see the status line
 set t_Co=256          " make sure colors work over ssh
 
