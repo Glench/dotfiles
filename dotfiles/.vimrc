@@ -83,11 +83,11 @@ endif
 
 " Keep swap files in one of these, double slash at the end prevents collisions
 " for files named the same thing, apparently.
-set directory=~/tmp//,/tmp//,.
-set backupdir=~/tmp//,/tmp//,.
+set directory=~/tmp/.vim_cache//,/tmp/.vim_cache//,.
+set backupdir=~/tmp/.vim_cache//,/tmp/.vim_cache//,.
 if version >= 703
     set undofile " also keep persistent undo when closing and reopening files
-    set undodir=~/tmp//,/tmp//,.
+    set undodir=~/tmp/.vim_cache//,/tmp/.vim_cache//,.
 endif
 
 
