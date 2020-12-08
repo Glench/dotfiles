@@ -126,6 +126,21 @@ nnoremap <tab> >>
 vnoremap <BS> <gv
 vnoremap <tab> >gv
 
+" move lines down/up with alt+k/alt+j (unicode is for mac)
+nnoremap ∆ :m .+1<CR>==
+nnoremap ˚ :m .-2<CR>==
+inoremap ∆ <Esc>:m .+1<CR>==gi
+inoremap ˚ <Esc>:m .-2<CR>==gi
+vnoremap ∆ :m '>+1<CR>gv=gv
+vnoremap ˚ :m '<-2<CR>gv=gv
+
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+
 " save session on buffer save and new buffer
 function! s:save_session()
     execute "normal! :GSessionMakeLocall<cr>"
@@ -139,7 +154,7 @@ vmap <leader>w :w<cr>
 nmap <leader>wq :wq!<cr>
 vmap <leader>wq :wq!<cr>
 nmap <leader>q :q<cr>
-vmap <leader>q :q<cr>
+vmap <leader>q <esc>:q<cr>
 nmap <leader>a :qa<cr>
 nmap <leader>1 :q!<cr>
 nmap <leader>a1 :qa!<cr>
@@ -297,3 +312,4 @@ let g:localvimrc_ask = 0
 let g:rg_highlight = 1
 nmap <Leader>f :Rg 
 vmap <Leader>f :Rg
+
