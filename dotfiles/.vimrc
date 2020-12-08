@@ -260,6 +260,7 @@ call plug#begin()
     Plug 'ervandew/supertab' " add smart tab completion
     Plug 'Glench/Vim-Jinja2-Syntax' " testing jinja support
     Plug 'embear/vim-localvimrc' " project-specific vimrcs
+    Plug 'ivandos/hlnext' " blink search term when navigating search results
 call plug#end()
 " profile with vim --startuptime ~/tmp/vim.log
 " from https://kynan.github.io/blog/2015/07/31/how-to-speed-up-your-vim-startup-time
