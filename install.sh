@@ -12,5 +12,5 @@ if [ "$(uname)" == "Darwin" ]; then
     launchctl load ~/Library/LaunchAgents/jitouch.restart.plist
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     # Do something under GNU/Linux platform
-    sudo apt-get install lf ffmpeg fzf youtube-dl
+    sudo apt-get install lf ffmpeg fzf youtube-dl ripgrep tldr
 fi
